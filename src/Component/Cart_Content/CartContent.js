@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Imageurl from "../Photo";
+import Imageurl from "../Photoss/Photo";
 import { useNavigate } from "react-router-dom";
 import "./CartContent.css";
 
