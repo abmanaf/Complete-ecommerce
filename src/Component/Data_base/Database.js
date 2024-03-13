@@ -145,7 +145,7 @@ export const initialProducts = [
     imageId: "5qJu1NYb",
     category: "vegetables",
   },
-  ,
+
   {
     name: "Lemons",
     price: "4.22",
@@ -164,7 +164,7 @@ export const initialProducts = [
     imageId: "ZLlXPUWb",
     category: "fruits",
   },
-  ,
+
   {
     name: "Pear",
     price: "4.22",
@@ -183,7 +183,7 @@ export const initialProducts = [
     imageId: "Nmc72ERb",
     category: "fruits",
   },
-  ,
+
   {
     name: "Green Grapes",
     price: "10.22",
