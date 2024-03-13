@@ -19,14 +19,13 @@
   text-align: center;
   margin-top: 3em;
 }
-.sub-shopping-cart-page table {
+.sub-shopping-cart-page {
   width: 100%;
-  border-color: collapse;
   margin-bottom: 20px;
   margin-top: 3em;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(182, 179, 176);
+  background-color: #e6e6e6;
   padding: 1em 1em;
 }
 
@@ -52,27 +51,20 @@
   border: none;
 }
 .quantity-button-decrease {
-  margin-right: 5px;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-  padding: 6px 6px;
+  margin-left: 5px;
   color: #333;
 }
 .quantity-button-increase {
   margin-right: 5px;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-  padding: 6px 6px;
   color: #333;
 }
+
 .action-button-style {
-  color: red;
+  color: rgb(117, 86, 86);
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
 }
 .check-point-proceed {
   width: 100%;
@@ -94,27 +86,43 @@
   text-align: center;
   margin-top: 4em;
 }
+.price-style {
+  margin-left: 8em;
+}
 
+@media only screen and (min-width: 678px) {
+  .price-style {
+    margin-left: 30em;
+  }
+}
 @media only screen and (min-width: 1024px) {
   #shopping-cart-list {
     display: flex;
     margin-top: 6em;
   }
-  .sub-shopping-cart-page table {
-    width: 100%;
-    margin-left: 8em;
+  .sub-shopping-cart-page {
+    width: 50%;
+    margin-left: 4em;
     background-color: white;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   }
 
   .check-point-proceed {
-    width: 25%;
+    width: 50%;
     height: 300px;
-    margin-left: 10em;
+    margin-left: 5em;
+    margin-right: 5em;
     padding: 10px 10px;
+    background-color: white;
+    border: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   }
   .cart-border {
     border: 1px solid black;
     border-radius: 15px;
+  }
+  .price-style {
+    margin-left: 18em;
   }
 }
 @media only screen and (min-width: 1366px) {
@@ -122,23 +130,24 @@
     display: flex;
     margin-top: 6em;
   }
-  .sub-shopping-cart-page table {
-    width: 100%;
-    margin-left: 15em;
-    background-color: white;
+  .sub-shopping-cart-page {
+    width: 65%;
   }
-
+  /*
   .table-sell-style img {
     width: 5em;
     height: 5em;
     border-radius: 10px;
   }
-
+*/
   .check-point-proceed {
-    width: 25%;
+    width: 35%;
     height: 300px;
-    margin-left: 20em;
     padding: 10px 10px;
+    margin-right: 4em;
+    background-color: white;
+    border: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   }
 
   .tableHeaderStyle {
@@ -146,15 +155,19 @@
     font-weight: bold;
     text-align: center;
   }
-
+  /*
   .quantity-button-decrease,
   .quantity-button-increase {
     background-color: white;
     padding: 10px 15px;
     margin-right: 5px;
   }
+  */
   .cart-border {
     border: 1px solid black;
     border-radius: 15px;
+  }
+  .price-style {
+    margin-left: 32em;
   }
 }
