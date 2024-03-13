@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Imageurl from "../Photoss/Photo";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./CartContent.css";
 
 const CartContent = ({ cart, updateCart, updateCartCount }) => {
@@ -68,7 +69,7 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
 
   const handleCheckpointClick = () => {
     const productIds = cart.map((product) => product.id);
-    navigate("/E-commerce-react/CheckPointButton", {
+    navigate("/CheckPointButton", {
       state: { productIds, cart },
     });
   };
@@ -90,63 +91,121 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
         <div className="shopping-cart-page-margin-top">
           <div id="shopping-cart-list">
             <div className="sub-shopping-cart-page">
-              <table>
-                <thead>
-                  <tr>
-                    <th className="tableHeaderStyle"></th>
-                    <th className="tableHeaderStyle">Product</th>
-                    <th className="tableHeaderStyle">Price &cent;</th>
-                    <th className="tableHeaderStyle">Quantity</th>
-                    <th className="tableHeaderStyle">Subtotal</th>
-                    <th className="tableHeaderStyle">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.map((product, index) => (
-                    <tr
-                      key={product.id}
-                      style={{
-                        borderBottom:
-                          index === cart.length - 1 ? "none" : "1px solid #ccc",
-                      }}
-                    >
-                      <td className="table-sell-style">
+              {cart.map((product, index) => (
+                <div
+                  key={product.id}
+                  style={{
+                    borderBottom:
+                      index === cart.length - 1 ? "none" : "1px solid #ccc",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      width: "75%",
+                      padding: "1em 1em",
+                    }}
+                  >
+                    <div></div>
+                    <div>
+                      <span className="table-sell-style">
                         <img src={Imageurl(product)} alt={product.id} />
-                      </td>
-                      <td className="table-sell-style">{product.name}</td>
-                      <td className="table-sell-style">{product.price}</td>
-                      <td style={{ textAlign: "center" }}>
-                        <div className="cart-border">
-                          <button
-                            onClick={() => reduceQuantity(product.id)}
-                            className="quantity-button-decrease"
-                          >
-                            -
-                          </button>
-                          {product.count}
-                          <button
-                            onClick={() => increaseQuantity(product.id)}
-                            className="quantity-button-increase"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </td>
-                      <td className="table-sell-style">
-                        {(product.count * parseFloat(product.price)).toFixed(2)}
-                      </td>
-                      <td className="table-sell-style">
+                      </span>
+                    </div>
+                    <div>
+                      <span className="table-sell-style">{product.name}</span>{" "}
+                      <span
+                        className="table-sell-style"
+                        style={{ float: "right" }}
+                      >
                         <button
                           onClick={() => removeFromCart(product.id)}
                           className="action-button-style"
                         >
-                          <i className="fa fa-trash" aria-hidden="true"></i>
+                          <i className="fa fa-times" aria-hidden="true"></i>
                         </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                      </span>
+                      <br />
+                      <br />
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <span>Price</span>
+                        <span className="price-style">{product.price}</span>
+                      </div>
+                      <br />
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <span>SubTotal</span>
+                        <span className="price-style">
+                          {(product.count * parseFloat(product.price)).toFixed(
+                            2
+                          )}
+                        </span>
+                        <br />
+                        <br />
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div style={{ marginTop: "1px" }}>
+                          <span>Quantity</span>
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <span
+                            style={{
+                              textAlign: "center",
+                              marginLeft: "6em",
+                            }}
+                          >
+                            <div className="cart-border">
+                              <Link
+                                onClick={() => reduceQuantity(product.id)}
+                                className="quantity-button-decrease"
+                                style={{
+                                  marginRight: "10px",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                -
+                              </Link>
+                              {product.count}
+                              <Link
+                                onClick={() => increaseQuantity(product.id)}
+                                className="quantity-button-increase"
+                                style={{
+                                  marginLeft: "10px",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                +
+                              </Link>
+                            </div>
+                          </span>
+                        </div>
+                      </div>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {/* */}
             </div>
             <div className="check-point-proceed">
               <div className="sub-check-point">
