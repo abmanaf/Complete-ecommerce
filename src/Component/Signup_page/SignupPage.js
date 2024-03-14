@@ -49,7 +49,7 @@ function SignupPage({ updateEnteredDetails }) {
       setEmail("");
       setPassword("");
 
-      navigate("/E-commerce-react/Data");
+      navigate("/Data");
     } else {
       alert("Please check password rules before");
     }
@@ -108,7 +108,7 @@ function SignupPage({ updateEnteredDetails }) {
           </button>
           <p className="form-footer" style={{ textAlign: "center" }}>
             Already have an account?{" "}
-            <Link to="/E-commerce-react/LoginPage" style={{ color: "#007bff" }}>
+            <Link to="/LoginPage" style={{ color: "#007bff" }}>
               Login
             </Link>
           </p>
