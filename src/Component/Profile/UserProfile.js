@@ -5,7 +5,7 @@ function UserProfile() {
   return (
     <div>
       <Link
-        to="/E-commerce-react/LoginPage"
+        to="/LoginPage"
         className="Hey"
         style={{ fontSize: "19px", marginRight: "0.5rem" }}
       >
