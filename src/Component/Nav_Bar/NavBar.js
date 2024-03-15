@@ -21,7 +21,7 @@ export default function Navbar({ cartCount }) {
     <nav className="navbar">
       <div
         className={`side-bar ${isSideBarOpen ? "open" : "closed"}`}
-        style={{ marginTop: "4em" }}
+        style={{ marginTop: "4em", }}
       >
         {/* 
         <div className="close-icon" onClick={closeSideBar}>
@@ -29,36 +29,31 @@ export default function Navbar({ cartCount }) {
         </div>
         */}
         <CustomLink
-          className="side-bar-context"
-          to="/E-commerce-react"
+          to="/"
           closeSideBar={closeSideBar}
         >
           Home
         </CustomLink>
         <CustomLink
-          className="side-bar-context"
-          to="/E-commerce-react/Shop"
+          to="/Shop"
           closeSideBar={closeSideBar}
         >
           Shop
         </CustomLink>
         <CustomLink
-          className="side-bar-context"
-          to="/E-commerce-react/About"
+          to="/About"
           closeSideBar={closeSideBar}
         >
           About
         </CustomLink>
         <CustomLink
-          className="side-bar-context"
-          to="/E-commerce-react/Contact"
+          to="/Contact"
           closeSideBar={closeSideBar}
         >
           Contact
         </CustomLink>
         <CustomLink
-          className="side-bar-context"
-          to="/E-commerce-react/LoginPage"
+          to="/LoginPage"
           closeSideBar={closeSideBar}
         >
           Login
@@ -66,7 +61,8 @@ export default function Navbar({ cartCount }) {
       </div>
       <div className="navbar-left">
         <li className="site-name">
-          <Link className="" to="/E-commerce-react" closeSideBar={closeSideBar}>
+          <Link  to="/" closeSideBar={closeSideBar}>
+            {" "}
             AlibabShop
           </Link>
         </li>
@@ -74,29 +70,28 @@ export default function Navbar({ cartCount }) {
       {/* */}
       <div className="navbar-middle">
         <CustomLink
-          className=""
-          to="/E-commerce-react"
+          to="/"
           closeSideBar={closeSideBar}
           style={{ color: "black" }}
         >
           Home
         </CustomLink>
         <CustomLink
-          to="/E-commerce-react/Shop"
+          to="/Shop"
           closeSideBar={closeSideBar}
           style={{ color: "black" }}
         >
           Shop
         </CustomLink>
         <CustomLink
-          to="/E-commerce-react/About"
+          to="/About"
           closeSideBar={closeSideBar}
           style={{ color: "black" }}
         >
           About
         </CustomLink>
         <CustomLink
-          to="/E-commerce-react/Contact"
+          to="/Contact"
           closeSideBar={closeSideBar}
           style={{ color: "black" }}
         >
@@ -106,7 +101,7 @@ export default function Navbar({ cartCount }) {
 
       <div className="navbar-right">
         <div className="login-icon">
-          <UserProfile to="/E-commerce-react/LoginPage" />
+          <UserProfile to="/LoginPage" />
         </div>
         <div className="icon-float">
           <div>
@@ -144,7 +139,7 @@ function CustomLink({ to, children, closeSideBar, ...props }) {
       className={`nav-link ${isActive ? "active" : ""}`}
       onClick={handleClick}
     >
-      <Link to={to} {...props}>
+      <Link className="specific-active" to={to} {...props}>
         {children}
       </Link>
     </div>
