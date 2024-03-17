@@ -97,6 +97,8 @@ body {
   }
   .signup-pic-and-forms {
     display: flex;
+    justify-content: space-between;
+
   }
 }
 
@@ -113,5 +115,6 @@ body {
   }
   .signup-pic-and-forms {
     display: flex;
+    justify-content: space-between;
   }
 }
