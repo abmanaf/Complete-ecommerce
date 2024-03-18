@@ -42,11 +42,7 @@ function Home({ cart, setCart, updateCartCount }) {
     const updatedProducts = products.map((product) => {
       if (product.id === productId) {
         if (product.availableProduct > 0) {
-          {
-            /*
-          const productInCart = cart.find((item) => item.id === productId);
-           */
-          }
+         
           const productInCart = cart
             ? cart.find((item) => item.id === productId)
             : null;
@@ -125,12 +121,12 @@ function Home({ cart, setCart, updateCartCount }) {
     ));
 
   const haddleOrder = () => {
-    navigate("/E-commerce-react/Shop");
+    navigate("/Shop");
   };
 
   return (
     <div>
-      <div className="site-description">
+      <div className="site-description" >
         <div className="left-site-description">
           <p className="in-touch">
             <strong>Welcome to AlibabShop</strong>
