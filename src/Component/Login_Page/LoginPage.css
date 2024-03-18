@@ -67,6 +67,8 @@ body {
   }
   .login-pic-and-forms {
     display: flex;
+        justify-content: space-between;
+
   }
 }
 
@@ -83,5 +85,6 @@ body {
   }
   .login-pic-and-forms {
     display: flex;
+    justify-content: space-between;
   }
 }
