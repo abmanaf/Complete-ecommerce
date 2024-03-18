@@ -62,10 +62,7 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
           </del>{" "}
           &cent;{product.price}
           <br />
-          {/* 
-          {product.availableProduct ? product.availableProduct: 'product is out of stock'}
-          <br />
-          */}
+       
           <br />
           <div className="addToCart">
             <button onClick={() => addToCart(product.id)}>Add To Cart</button>
@@ -74,32 +71,7 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
       </li>
     </div>
   ));
-  {
-    /*
-  const healthyFruits = initialProducts
-    .filter((item) => item.category === "fruits")
-    .map((item) => (
-      <div className="fruit-container" key={item.id}>
-        <li>
-          <div className="sub-fruit-container">
-            <img src={Imageurl(item)} alt={item.id} />
-            <br />
-            {item.name} <br /> <br />
-            <del style={{ color: "red" }}>
-              {item.previousPrice ? `₵${item.previousPrice}` : ""}
-            </del>{" "}
-            &cent;{item.price}
-            <br />
-            <br />
-            <div className="addToCart">
-              <button onClick={() => addToCart(item.id)}>Add To Cart</button>
-            </div>
-          </div>
-        </li>
-      </div>
-    ));
- */
-  }
+
   return (
     <div>
       <div style={{ backgroundColor: "white", padding: "3em 3em" }}>
