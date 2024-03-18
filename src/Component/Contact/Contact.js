@@ -7,7 +7,7 @@ const Contact = () => {
   const [contactingEmail, setContactingEmail] = useState("");
   const [contactingMessage, setContactingMessage] = useState("");
 
-  const [contacting, setContacting] = useState([]);
+  //const [contacting, setContacting] = useState([]);
 
   const handleSendFromContactPage = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const Contact = () => {
         message: contactingMessage,
       };
 
-      setContacting((contacting) => [...contacting, newContact]);
+      //setContacting((contacting) => [...contacting, newContact]);
 
       setContactingName("");
       setContactingEmail("");
