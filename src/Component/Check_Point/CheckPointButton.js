@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 import "./CheckPointButton.css";
 
@@ -9,10 +9,10 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [telephone, setTelephone] = useState("");
-  const [contomerDetails, setCustomerDetails] = useState([]);
+  //const [contomerDetails, setCustomerDetails] = useState([]);
   const location = useLocation();
   const { productIds, cart } = location.state || {};
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   const calculateTotalAmount = () => {
@@ -49,7 +49,7 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
           <p>Thank you for your order!</p>
         </div>
       ) : (
-        <div className="checkout-content">
+        <div className="checkout-content" style={{margin: '10px'}}>
           <div className="checkout-form">
             <form>
               <div className="form-group">
