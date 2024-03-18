@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Imageurl from "../Photoss/Photo";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import "./CartContent.css";
 
 const CartContent = ({ cart, updateCart, updateCartCount }) => {
   const navigate = useNavigate();
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  //const [selectedProduct, setSelectedProduct] = useState(null);
 
   const increaseQuantity = (productId) => {
     const updatedCart = cart.map((product) => {
@@ -80,9 +80,8 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
         <div id="shopping-cart-list-empty">
           <img
             src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-2130356-1800917.png"
-            alt=""
-            width="400px"
-            height="400px"
+            alt="cart"
+           
           />{" "}
           <br />
           <strong className="empty-cart-text">Cart is empty</strong>
