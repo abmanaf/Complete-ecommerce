@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "./Component/Nav_Bar/NavBar";
 //import { SiteDescription } from "./SiteDescription";
 import Home from "./Component/Home_Page/Home";
@@ -7,7 +7,7 @@ import About from "./Component/About_Us/About";
 import Contact from "./Component/Contact/Contact";
 import CartContent from "./Component/Cart_Content/CartContent";
 
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import FinalFooter from "./Component/Footer/Footer";
 import { WhatsAppIcon } from "./WhatsApp_icon/WhatsAppIcon";
 import CheckPointButton from "./Component/Check_Point/CheckPointButton";
@@ -35,7 +35,7 @@ export default function App() {
       <Navbar cartCount={cartCount} cart={cart} />
       <Routes>
         <Route
-          path="/E-commerce-react"
+          path="/"
           element={
             <Home
               cart={cart}
@@ -45,7 +45,7 @@ export default function App() {
           }
         />
         <Route
-          path="/E-commerce-react/Shop"
+          path="/Shop"
           element={
             <Shop
               updateCartCount={updateCartCount}
@@ -54,10 +54,10 @@ export default function App() {
             />
           }
         />
-        <Route path="/E-commerce-react/About" element={<About />} />
-        <Route path="/E-commerce-react/Contact" element={<Contact />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Contact" element={<Contact />} />
         <Route
-          path="/E-commerce-react/CartContent"
+          path="/CartContent"
           element={
             <CartContent
               cart={cart}
@@ -67,7 +67,7 @@ export default function App() {
           }
         />
         <Route
-          path="/E-commerce-react/CheckPointButton"
+          path="/CheckPointButton"
           element={
             <CheckPointButton
               cart={cart}
@@ -77,7 +77,7 @@ export default function App() {
           }
         />
         <Route
-          path="/E-commerce-react/SignupPage"
+          path="/SignupPage"
           element={
             <SignupPage
               updateEnteredDetails={setEnteredDetails}
@@ -86,15 +86,15 @@ export default function App() {
           }
         />
         <Route
-          path="/E-commerce-react/LoginPage"
+          path="/LoginPage"
           element={<LoginPage enteredDetails={enteredDetails} />}
         />
         <Route
-          path="/E-commerce-react/Data"
+          path="/Data"
           element={<Data enteredDetails={enteredDetails} />}
         />
         <Route
-          path="/E-commerce-react/ForgotPassword"
+          path="/ForgotPassword"
           element={<ForgotPassword enteredDetails={enteredDetails} />}
         />
       </Routes>
