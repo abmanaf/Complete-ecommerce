@@ -5,7 +5,7 @@ const CartIcon = ({ cartCount }) => {
   return (
     <div>
       <Link
-        to="/E-commerce-react/CartContent"
+        to="/CartContent"
         className="cart-icon"
         style={{ fontSize: "20px" }}
       >
