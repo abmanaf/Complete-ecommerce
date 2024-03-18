@@ -8,7 +8,7 @@ ul {
 
 /* Style the navigation bar */
 .navbar {
-  background-color: #f9f6f6;
+  background-color: #ece8e8;
   display: flex;
   color: #020202;
   justify-content: space-between;
@@ -41,8 +41,10 @@ ul {
   height: auto;
   width: 100%;
   z-index: 999;
+  background-color: #ece8e8;
+  /*
   background-color: rgba(0, 0, 0, 0.2);
-
+*/
   padding: 2em 2em;
 
   backdrop-filter: blur(10px);
@@ -173,9 +175,11 @@ ul {
   .navbar-toggle {
     display: block;
   }
+  /*
   .side-bar {
     display: none;
   }
+  */
 }
 @media screen and (min-width: 1366px) {
   .navbar-middle {
@@ -203,10 +207,12 @@ ul {
   .navbar-toggle {
     display: block;
   }
+  /*
   .side-bar {
     display: none;
   }
+  */
 }
-.active {
+.active .specific-active {
   border-bottom: 0.12rem solid #ed0c0c;
 }
