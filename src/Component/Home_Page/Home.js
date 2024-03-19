@@ -113,7 +113,7 @@ function Home({ cart, setCart, updateCartCount }) {
             <br />
             <br />
             <div className="addToCart">
-              <button onClick={() => addToCart(item.id)}>Add To Cart</button>
+              <button onClick={() => addToCart(item.id)} style={{color: 'black'}}>Add To Cart</button>
             </div>
           </div>
         </li>
