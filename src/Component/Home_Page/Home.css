@@ -25,6 +25,7 @@
 .fruit-in-container {
   overflow-x: scroll;
 }
+
 .fruit-in-container::-webkit-scrollbar {
   display: none;
 }
@@ -118,6 +119,14 @@
 .scroll-button {
   display: flex;
   gap: 5px;
+}
+.sub-fruit-container button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 1px solid black;
+  color: red;
+
 }
 
 .scroll-button button {
