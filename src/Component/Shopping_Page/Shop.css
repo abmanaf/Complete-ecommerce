@@ -42,6 +42,7 @@ body {
   text-align: center;
   margin-bottom: 20px;
   font-size: 12px;
+  color: black;
 }
 .sub-fruit-container img {
   width: 70%;
@@ -73,6 +74,7 @@ body {
   padding: 10px 20px;
   border-radius: 15px;
   border: 1px solid black;
+  color: black;
 }
 
 .available-product-container {
