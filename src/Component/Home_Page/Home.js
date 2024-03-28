@@ -1,9 +1,9 @@
 import React from "react";
-import "./Home.css";
 import Imageurl from "../Photoss/Photo";
 import { initialProducts } from "../Data_base/Database";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
+import "./Home.css";
 
 function Home({ cart, setCart, updateCartCount }) {
   const [products, setProducts] = useState(initialProducts);
@@ -42,7 +42,6 @@ function Home({ cart, setCart, updateCartCount }) {
     const updatedProducts = products.map((product) => {
       if (product.id === productId) {
         if (product.availableProduct > 0) {
-         
           const productInCart = cart
             ? cart.find((item) => item.id === productId)
             : null;
@@ -113,7 +112,12 @@ function Home({ cart, setCart, updateCartCount }) {
             <br />
             <br />
             <div className="addToCart">
-              <button onClick={() => addToCart(item.id)} style={{color: 'black'}}>Add To Cart</button>
+              <button
+                onClick={() => addToCart(item.id)}
+                style={{ color: "black" }}
+              >
+                Add To Cart
+              </button>
             </div>
           </div>
         </li>
@@ -126,7 +130,7 @@ function Home({ cart, setCart, updateCartCount }) {
 
   return (
     <div>
-      <div className="site-description" >
+      <div className="site-description">
         <div className="left-site-description">
           <p className="in-touch">
             <strong>Welcome to AlibabShop</strong>
