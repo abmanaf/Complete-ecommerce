@@ -103,7 +103,7 @@
   padding: 10px 10px;
   margin-right: 10px;
   cursor: pointer;
-  background-color: transparent; /* Set the default background color */
+  background-color: transparent;
   border: none;
   outline: none;
 }
