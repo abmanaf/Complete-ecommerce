@@ -173,11 +173,6 @@
   .sort-container {
     display: none;
   }
-  /*
-    .scroll-button {
-      margin-left: 32em;
-    }
-    */
 }
 
 @media only screen and (min-width: 1024px) {
