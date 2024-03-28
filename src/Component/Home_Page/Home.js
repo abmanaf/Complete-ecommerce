@@ -148,6 +148,7 @@ function Home({ cart, setCart, updateCartCount }) {
                 border: "none",
                 cursor: "pointer",
                 marginTop: "2em",
+                color: "black",
               }}
               onClick={() => haddleOrder()}
             >
@@ -170,10 +171,18 @@ function Home({ cart, setCart, updateCartCount }) {
               <strong>Healthy Fruits:</strong>
             </div>
             <div className="scroll-button">
-              <button className="scroll-left-right" onClick={scrollLeft}>
+              <button
+                className="scroll-left-right"
+                style={{ color: "black" }}
+                onClick={scrollLeft}
+              >
                 &lt;{" "}
               </button>
-              <button className="scroll-left-right" onClick={scrollRight}>
+              <button
+                className="scroll-left-right"
+                style={{ color: "black" }}
+                onClick={scrollRight}
+              >
                 {" "}
                 &gt;
               </button>
