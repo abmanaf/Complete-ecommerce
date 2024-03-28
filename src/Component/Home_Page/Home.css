@@ -104,7 +104,7 @@
   margin-right: 10px;
   cursor: pointer;
   background-color: transparent; /* Set the default background color */
-  border: none; /* Remove the default button border */
+  border: none;
   outline: none; /* Remove the default button outline */
 }
 
