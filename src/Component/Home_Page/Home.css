@@ -105,7 +105,7 @@
   cursor: pointer;
   background-color: transparent; /* Set the default background color */
   border: none;
-  outline: none; /* Remove the default button outline */
+  outline: none;
 }
 
 .filter-button button:last-child {
