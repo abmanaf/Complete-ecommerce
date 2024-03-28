@@ -132,7 +132,7 @@ function Home({ cart, setCart, updateCartCount }) {
     <div>
       <div className="site-description">
         <div className="left-site-description">
-          <p className="in-touch">
+          <p className="welcome-message">
             <strong>Welcome to AlibabShop</strong>
           </p>
           <div className="title-order">
