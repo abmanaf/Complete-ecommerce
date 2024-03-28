@@ -114,7 +114,7 @@
 
 .filter-button button.active {
   background-color: #c6b562;
-  color: white; /* Set the text color for the active button */
+  color: white;
 }
 
 .scroll-button {
