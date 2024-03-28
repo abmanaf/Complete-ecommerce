@@ -247,7 +247,7 @@
   }
 
   .fruit-container .sub-fruit-container {
-    min-width: 180px; /* Adjust the minimum width as needed */
+    min-width: 180px;
     white-space: normal;
   }
   /*
