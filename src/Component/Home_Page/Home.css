@@ -33,8 +33,8 @@
 .fruit-container .sub-fruit-container {
   width: 130px;
 }
-.in-touch {
-  font-size: 30px;
+.welcome-message {
+  font-size: 25px;
   margin-top: 4em;
   margin-bottom: 1em;
 }
