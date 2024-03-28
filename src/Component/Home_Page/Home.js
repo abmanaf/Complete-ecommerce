@@ -24,7 +24,7 @@ function Home({ cart, setCart, updateCartCount }) {
   const scrollRight = () => {
     if (fruitContainerRef.current) {
       fruitContainerRef.current.scrollBy({
-        left: 200, // Adjust the scroll distance as needed
+        left: 200,
         behavior: "smooth",
       });
     }
