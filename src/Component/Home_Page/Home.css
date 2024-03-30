@@ -206,11 +206,6 @@
   .fruit-container .sub-fruit-container {
     width: 150px;
   }
-  /*
-    .scroll-button {
-      margin-left: 46em;
-    }
-    */
 }
 
 @media only screen and (min-width: 1366px) {
