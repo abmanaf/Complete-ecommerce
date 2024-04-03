@@ -72,9 +72,6 @@ body {
       text-align: left;
     }
     
-    .product-table th {
-      background-color: #f2f2f2;
-    }
     
     .product-table tbody tr:nth-child(even) {
       background-color: #f2f2f2;
@@ -98,7 +95,6 @@ body {
   .signup-pic-and-forms {
     display: flex;
     justify-content: space-between;
-
   }
 }
 
