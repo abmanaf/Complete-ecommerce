@@ -5,36 +5,42 @@ import "./LoginPage.css";
 export default function LoginPage({ enteredDetails }) {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleUserEmail = (e) => {
-    setUserEmail(e.target.value);
-  };
-
-  const handleUserPassword = (e) => {
-    setPassword(e.target.value);
-  };
+  const [error, setError] = useState({
+    userEmail: false,
+    password: false,
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    /*
     console.log("entered Details:", enteredDetails);
     console.log("user Email:", userEmail);
     console.log("password:", password);
+*/
+    const newError = {
+      userEmail: userEmail.trim() === "",
+      password: password.trim() === "",
+    };
+    setError(newError);
+    const isValid = !Object.values(newError).some((value) => value);
+    if (isValid) {
+      if (enteredDetails && enteredDetails.length > 0) {
+        const findUser = enteredDetails.find(
+          (user) => user.email === userEmail && user.password === password
+        );
 
-    if (enteredDetails && enteredDetails.length > 0) {
-      const findUser = enteredDetails.find(
-        (user) => user.email === userEmail && user.password === password
-      );
+        console.log("findUser:", findUser);
 
-      console.log("findUser:", findUser);
-
-      if (findUser !== undefined) {
-        alert(`Welcome ${userEmail}`);
+        if (findUser !== undefined) {
+          alert(`Welcome ${userEmail}`);
+        } else {
+          alert("User not found");
+        }
       } else {
-        alert("User not found");
+        alert("User not found, create an account");
       }
-    } else {
-      alert("User not found, create an account");
+      setUserEmail("");
+      setPassword("");
     }
   };
 
@@ -44,22 +50,32 @@ export default function LoginPage({ enteredDetails }) {
       <div className="form-container" style={{ marginTop: "11.1em" }}>
         <h2 style={{ textAlign: "center" }}>Login</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            className="form-input"
-            placeholder="Email"
-            onChange={handleUserEmail}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            className="form-input"
-            placeholder="Password"
-            onChange={handleUserPassword}
-            required
-          />
+          <div className="input-container">
+            <input
+              type="text"
+              name="username"
+              className="form-input"
+              placeholder="Email"
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
+            />
+            {error.userEmail && (
+              <span className="error-message">This field is required</span>
+            )}
+          </div>
+          <div className="input-container">
+            <input
+              type="password"
+              name="password"
+              className="form-input"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error.password && (
+              <span className="error-message">This field is required</span>
+            )}
+          </div>
           <Link
             to="/ForgotPassword"
             style={{
