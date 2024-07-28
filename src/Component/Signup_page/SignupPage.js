@@ -7,34 +7,32 @@ function SignupPage({ updateEnteredDetails }) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState({
+    firstName: false,
+    lastName: false,
+    email: false,
+    password: false,
+  });
   const navigate = useNavigate();
 
   const userName = firstName.toLowerCase() + lastName.toLowerCase();
 
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
   const handleSubmitForms = (e) => {
     e.preventDefault();
 
-    if (
-      password.length >= 5 &&
-      password !== email &&
-      password !== firstName + lastName
-    ) {
+    const newError = {
+      firstName: firstName.trim() === "",
+      lastName: lastName.trim() === "",
+      email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+      password:
+        password.length < 6 ||
+        password === email ||
+        password === firstName + lastName,
+    };
+    setError(newError);
+
+    const isValid = !Object.values(newError).some((value) => value);
+    if (isValid) {
       const newUser = {
         firstName: firstName,
         lastName: lastName,
@@ -48,10 +46,7 @@ function SignupPage({ updateEnteredDetails }) {
       setLastName("");
       setEmail("");
       setPassword("");
-
       navigate("/Data");
-    } else {
-      alert("Please check password rules before");
     }
   };
 
@@ -61,40 +56,58 @@ function SignupPage({ updateEnteredDetails }) {
       <div className="form-container" style={{ marginTop: "8em" }}>
         <h2 style={{ textAlign: "center" }}>Create Account</h2>
         <form onSubmit={handleSubmitForms}>
-          <input
-            type="text"
-            name="first_name"
-            className="form-input"
-            placeholder="First name"
-            onChange={handleFirstName}
-            required
-          />
-          <input
-            type="text"
-            name="last_name"
-            className="form-input"
-            placeholder="Last name"
-            onChange={handleLastName}
-            required
-          />
-
-          <input
-            type="email"
-            name="email"
-            className="form-input"
-            placeholder="Email"
-            onChange={handleEmail}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            className="form-input"
-            placeholder="Password"
-            onChange={handlePassword}
-            required
-          />
+          <div className="input-container">
+            <input
+              type="text"
+              name="first_name"
+              className="form-input"
+              placeholder="First name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            {error.firstName && (
+              <span className="error-message">This field is required</span>
+            )}
+          </div>
+          <div className="input-container">
+            <input
+              type="text"
+              name="last_name"
+              className="form-input"
+              placeholder="Last name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            {error.lastName && (
+              <span className="error-message">This field is required</span>
+            )}
+          </div>
+          <div className="input-container">
+            <input
+              type="email"
+              name="email"
+              className="form-input"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {error.email && (
+              <span className="error-message">Invalid email address</span>
+            )}
+          </div>
+          <div className="input-container">
+            <input
+              type="password"
+              name="password"
+              className="form-input"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error.password && (
+              <span className="error-message">Check the password criteria</span>
+            )}
+          </div>
           <p style={{ fontSize: "14px", color: "#777777" }}>
             Your password must:
           </p>
@@ -114,33 +127,6 @@ function SignupPage({ updateEnteredDetails }) {
           </p>
         </form>
       </div>
-      {/* 
-      <div>
-      <h2 style={{ textAlign: "center" }}> User Details</h2>
-      <table className="product-table" style={{ margin: "0 auto" }}>
-        <thead>
-          <tr style={{ textAlign: "center" }}>
-            <th>First-name</th>
-            <th>Last-name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>ID</th>
-          </tr>
-        </thead>
-        <tbody>
-          {enteredDetails.map((user) => (
-            <tr key={user.id}>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.email}</td>
-              <td>{user.password}</td>
-              <td>{user.id}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    */}
     </div>
   );
 }
