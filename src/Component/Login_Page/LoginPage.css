@@ -28,11 +28,17 @@ body {
 
 .form-input {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+}
+
+.input-container .error-message {
+  font-size: 14px;
+  color: red;
+  display: block;
 }
 
 .form-button {
@@ -67,8 +73,7 @@ body {
   }
   .login-pic-and-forms {
     display: flex;
-        justify-content: space-between;
-
+    justify-content: space-between;
   }
 }
 
