@@ -1,0 +1,14 @@
+.toast-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--white);
+  gap: 1rem;
+  margin-inline: auto;
+}
+
+.toast-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
