@@ -54,27 +54,31 @@ export default function LoginPage({ enteredDetails }) {
             <input
               type="text"
               name="username"
-              className="form-input"
+              className={`form-input ${error.userEmail ? "error" : ""}`}
               placeholder="Email"
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
             />
+            {/* 
             {error.userEmail && (
               <span className="error-message">This field is required</span>
             )}
+              */}
           </div>
           <div className="input-container">
             <input
               type="password"
               name="password"
-              className="form-input"
+              className={`form-input ${error.password ? "error" : ""}`}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {/* 
             {error.password && (
               <span className="error-message">This field is required</span>
             )}
+              */}
           </div>
           <Link
             to="/ForgotPassword"
