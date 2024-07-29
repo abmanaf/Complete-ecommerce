@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 import Toast from "../Toaste/Toast";
 import toast, { Toaster } from "react-hot-toast";
