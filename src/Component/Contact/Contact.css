@@ -60,15 +60,24 @@ input {
   margin-top: 0.5em;
   border-radius: 5px;
   border: 1px solid rgb(127, 118, 118);
+  outline: none;
 }
 textarea {
-  padding: 4em;
   width: 100%;
+  height: 10rem;
+  padding: 1em;
   margin-top: 0.5em;
   border-radius: 5px;
   border: 1px solid rgb(127, 118, 118);
+  outline: none;
 }
-
+.error-message {
+  color: red;
+}
+.error {
+  outline: 1px solid red;
+  border: none;
+}
 .submit-message {
   background-color: #007bff;
   color: #fff;
