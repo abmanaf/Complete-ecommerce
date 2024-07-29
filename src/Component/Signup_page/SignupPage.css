@@ -2,7 +2,9 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  /*
   background-color: #f8f8f8;
+  */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -29,7 +31,7 @@ body {
   padding: 40px;
   background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .input-container {
   margin-bottom: 5px;
@@ -90,7 +92,9 @@ body {
     */
 @media only screen and (min-width: 1024px) {
   .signup-emoji {
+    /*
     background-image: url("Login-emoji.jpg");
+    */
     background-repeat: no-repeat;
     background-size: cover;
     width: 300px;
