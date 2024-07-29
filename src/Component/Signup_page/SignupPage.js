@@ -15,7 +15,7 @@ function SignupPage({ updateEnteredDetails }) {
     email: false,
     password: false,
   });
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const userName = firstName.toLowerCase() + lastName.toLowerCase();
 
