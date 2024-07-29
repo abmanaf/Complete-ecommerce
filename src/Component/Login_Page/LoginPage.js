@@ -46,7 +46,9 @@ export default function LoginPage({ enteredDetails }) {
 
   return (
     <div className="login-pic-and-forms">
+      {/* 
       <div className="login-emoji"></div>
+      */}
       <div className="form-container" style={{ marginTop: "11.1em" }}>
         <h2 style={{ textAlign: "center" }}>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -59,11 +61,10 @@ export default function LoginPage({ enteredDetails }) {
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
             />
-            {/* 
+
             {error.userEmail && (
               <span className="error-message">This field is required</span>
             )}
-              */}
           </div>
           <div className="input-container">
             <input
@@ -74,11 +75,10 @@ export default function LoginPage({ enteredDetails }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {/* 
+
             {error.password && (
               <span className="error-message">This field is required</span>
             )}
-              */}
           </div>
           <Link
             to="/ForgotPassword"
