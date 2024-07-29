@@ -60,53 +60,61 @@ function SignupPage({ updateEnteredDetails }) {
             <input
               type="text"
               name="first_name"
-              className="form-input"
+              className={`form-input ${error.firstName ? "error" : ""}`}
               placeholder="First name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
+            {/*
             {error.firstName && (
               <span className="error-message">This field is required</span>
             )}
+               */}
           </div>
           <div className="input-container">
             <input
               type="text"
               name="last_name"
-              className="form-input"
+              className={`form-input ${error.lastName ? "error" : ""}`}
               placeholder="Last name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
+            {/* 
             {error.lastName && (
               <span className="error-message">This field is required</span>
             )}
+              */}
           </div>
           <div className="input-container">
             <input
               type="email"
               name="email"
-              className="form-input"
+              className={`form-input ${error.email ? "error" : ""}`}
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {/* 
             {error.email && (
               <span className="error-message">Invalid email address</span>
             )}
+              */}
           </div>
           <div className="input-container">
             <input
               type="password"
               name="password"
-              className="form-input"
+              className={`form-input ${error.password ? "error" : ""}`}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {/* 
             {error.password && (
               <span className="error-message">Check the password criteria</span>
             )}
+              */}
           </div>
           <p style={{ fontSize: "14px", color: "#777777" }}>
             Your password must:
