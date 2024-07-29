@@ -57,13 +57,14 @@ function SignupPage({ updateEnteredDetails }) {
   return (
     <>
       <Toaster
-        position="top-center"
+        position="top-right"
         reverseOrder={false}
         toastOptions={{
           duration: 4000,
           style: {
             background: "var(  --Green-medium)",
             color: "#fff",
+            marginTop: "4em",
           },
         }}
       />
