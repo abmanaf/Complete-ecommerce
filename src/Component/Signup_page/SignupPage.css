@@ -36,7 +36,6 @@ body {
 }
 .error {
   outline: 1px solid red;
-  border: none;
   transition: 0.3s ease-in-out;
 }
 .input-container .error-message {
