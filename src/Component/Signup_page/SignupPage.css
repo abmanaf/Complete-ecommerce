@@ -29,10 +29,14 @@ body {
   padding: 40px;
   background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
 }
 .input-container {
   margin-bottom: 5px;
+}
+.error {
+  outline: 1px solid red;
+  transition: 0.3s ease-in-out;
 }
 .input-container .error-message {
   font-size: 14px;
