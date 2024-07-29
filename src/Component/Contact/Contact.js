@@ -37,9 +37,10 @@ const Contact = () => {
         setContactingName("");
         setContactingEmail("");
         setContactingMessage("");
-      } else {
+      } /*else {
         alert("Please fill in all fields before submitting.");
       }
+        */
     }
     setError(newError);
     console.log(
