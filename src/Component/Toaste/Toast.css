@@ -12,3 +12,14 @@
   align-items: center;
   gap: 1rem;
 }
+.react-hot-toast {
+  transition: transform 0.6s ease-in-out;
+}
+
+.react-hot-toast--enter {
+  transform: translateX(0);
+}
+
+.react-hot-toast--exit {
+  transform: translateX(100%);
+}
