@@ -45,9 +45,7 @@ ul {
   width: 100%;
   z-index: 999;
   background-color: #ece8e8;
-  /*
-  background-color: rgba(0, 0, 0, 0.2);
-*/
+
   padding: 2em 2em;
 
   backdrop-filter: blur(10px);
