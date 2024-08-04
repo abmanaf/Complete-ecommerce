@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
-//import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import UserProfile from "../Profile/UserProfile";
 import CartIcon from "../Cart_Icon/CartIcon";
@@ -21,47 +20,32 @@ export default function Navbar({ cartCount }) {
     <nav className="navbar">
       <div
         className={`side-bar ${isSideBarOpen ? "open" : "closed"}`}
-        style={{ marginTop: "4em", }}
+        style={{ marginTop: "4em" }}
       >
         {/* 
         <div className="close-icon" onClick={closeSideBar}>
           <i className="fa fa-times" aria-hidden="true"></i>
         </div>
         */}
-        <CustomLink
-          to="/"
-          closeSideBar={closeSideBar}
-        >
+        <CustomLink to="/" closeSideBar={closeSideBar}>
           Home
         </CustomLink>
-        <CustomLink
-          to="/Shop"
-          closeSideBar={closeSideBar}
-        >
+        <CustomLink to="/Shop" closeSideBar={closeSideBar}>
           Shop
         </CustomLink>
-        <CustomLink
-          to="/About"
-          closeSideBar={closeSideBar}
-        >
+        <CustomLink to="/About" closeSideBar={closeSideBar}>
           About
         </CustomLink>
-        <CustomLink
-          to="/Contact"
-          closeSideBar={closeSideBar}
-        >
+        <CustomLink to="/Contact" closeSideBar={closeSideBar}>
           Contact
         </CustomLink>
-        <CustomLink
-          to="/LoginPage"
-          closeSideBar={closeSideBar}
-        >
+        <CustomLink to="/LoginPage" closeSideBar={closeSideBar}>
           Login
         </CustomLink>
       </div>
       <div className="navbar-left">
         <li className="site-name">
-          <Link  to="/" closeSideBar={closeSideBar}>
+          <Link to="/" closeSideBar={closeSideBar}>
             {" "}
             AlibabShop
           </Link>
