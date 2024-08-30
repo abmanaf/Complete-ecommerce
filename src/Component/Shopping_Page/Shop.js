@@ -62,7 +62,6 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
           </del>{" "}
           &cent;{product.price}
           <br />
-       
           <br />
           <div className="addToCart">
             <button onClick={() => addToCart(product.id)}>Add To Cart</button>
