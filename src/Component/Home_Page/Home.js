@@ -3,11 +3,14 @@ import Imageurl from "../Photoss/Photo";
 import { initialProducts } from "../Data_base/Database";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
+import Toast from "../Toaste/Toast";
+import toast, { Toaster } from "react-hot-toast";
 import "./Home.css";
 
 function Home({ cart, setCart, updateCartCount }) {
   const [products, setProducts] = useState(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedProductIds, setSelectedProductIds] = useState([]);
   const navigate = useNavigate();
 
   const fruitContainerRef = useRef(null);
@@ -45,18 +48,32 @@ function Home({ cart, setCart, updateCartCount }) {
           const productInCart = cart
             ? cart.find((item) => item.id === productId)
             : null;
+
           if (!productInCart) {
+            setSelectedProductIds((prevSelected) => {
+              if (!prevSelected.includes(productId)) {
+                return [...prevSelected, productId];
+              }
+              return prevSelected;
+            });
+            toast.success(<Toast message={`${product.name} added to cart`} />);
             return {
               ...product,
               count: Number(product.count) + 1,
             };
           } else {
+            /*
             alert(
               `${product.name} is already in the cart, visit the cart to increase the product quantity`
             );
+            */
+            toast.error(
+              <Toast message={`${product.name} is already in the cart`} />
+            );
           }
         } else {
-          alert(`${product.name} is out of stock`);
+          //alert(`${product.name} is out of stock`);
+          toast.error(<Toast message={`${product.name} is out of stock`} />);
         }
       }
       return product;
@@ -76,8 +93,16 @@ function Home({ cart, setCart, updateCartCount }) {
   };
 
   const productList = filteredProducts.map((product, index) => (
-    <div className="product-container" key={product.id}>
-      <li>
+    <div
+      className="product-container"
+      key={product.id}
+      style={{ marginBottom: "2em", position: "relative" }}
+    >
+      <li
+        className={`list  ${
+          selectedProductIds.includes(product.id) ? "border" : ""
+        }`}
+      >
         <div className="sub-product-container">
           <img src={Imageurl(product)} alt={product.id} />
           <br />
@@ -111,7 +136,7 @@ function Home({ cart, setCart, updateCartCount }) {
             &cent;{item.price}
             <br />
             <br />
-            <div className="addToCart">
+            <div className="fruit-addToCart">
               <button
                 onClick={() => addToCart(item.id)}
                 style={{ color: "black" }}
@@ -130,6 +155,17 @@ function Home({ cart, setCart, updateCartCount }) {
 
   return (
     <div>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 2000,
+          style: {
+            background: "var(--Grey-darker)",
+            color: "#fff",
+          },
+        }}
+      />
       <div className="site-description">
         <div className="left-site-description">
           <p className="welcome-message">
