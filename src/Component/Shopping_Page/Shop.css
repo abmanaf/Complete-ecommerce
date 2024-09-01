@@ -95,15 +95,37 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.addToCart {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+.addToCart button {
+  padding: 1em;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
 .addToCart button:hover {
-  background-color: #777;
+  background-color: #ce6e2e;
   color: white;
+  transition: all 0.3s ease;
+}
+.border {
+  border: 2px solid green;
+  transition: all 0.3s ease;
 }
 
 @media only screen and (min-width: 678px) {
   .product-container {
     width: 200px;
-    padding: 10px 10px;
+    padding: 0;
   }
 
   .product-in-container {
@@ -113,10 +135,26 @@ body {
   }
   .product-container li {
     height: auto;
+    margin: 5px;
   }
   .product-container li img {
     margin-top: 1em;
   }
+  /*
+  .addToCart button {
+    padding: 10px;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    bottom: 1.2em;
+    left: 50%;
+    transform: translateX(50%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+    */
 }
 
 @media only screen and (min-width: 1024px) {
@@ -143,12 +181,17 @@ body {
 @media only screen and (min-width: 1366px) {
   .product-container {
     width: 230px;
-    padding: 10px 10px;
+    padding: 0;
   }
+  .product-container li {
+    margin: 10px;
+  }
+  /*
   .fruit-container {
     width: 230px;
     padding: 10px 10px;
   }
+    */
 
   .product-in-container {
     display: flex;
@@ -175,4 +218,19 @@ body {
   .product-container li img {
     margin-top: 1em;
   }
+  /*
+  .addToCart button {
+    padding: 10px;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    bottom: 1.2em;
+    left: 50%;
+    transform: translateX(50%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+    */
 }

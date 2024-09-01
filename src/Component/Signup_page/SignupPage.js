@@ -36,7 +36,8 @@ function SignupPage({ updateEnteredDetails }) {
 
     const isValid = !Object.values(newError).some((value) => value);
     if (isValid) {
-      toast((t) => <Toast onClick={() => toast.dismiss(t.id)} />);
+      //toast((t) => <Toast onClick={() => toast.dismiss(t.id)} />);
+      toast.success(<Toast message={`${firstName} Welcome Have nice day`} />);
       const newUser = {
         firstName: firstName,
         lastName: lastName,
@@ -61,11 +62,10 @@ function SignupPage({ updateEnteredDetails }) {
         position="top-right"
         reverseOrder={false}
         toastOptions={{
-          duration: 4000,
+          duration: 2000,
           style: {
-            background: "var(  --Green-medium)",
+            background: "var(--Grey-darker)",
             color: "#fff",
-            marginTop: "4em",
           },
         }}
       />
