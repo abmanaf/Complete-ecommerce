@@ -141,6 +141,12 @@
   padding: 5px 10px;
   border-radius: 5px;
 }
+
+.fruit-addToCart button:hover {
+  background-color: #ce6e2e;
+  color: white;
+  transition: all 0.3s ease;
+}
 /*
 @media only screen and (min-width: 768px) {
   .title {
