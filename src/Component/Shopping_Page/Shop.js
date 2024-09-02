@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Imageurl from "../Photoss/Photo";
 import { initialProducts } from "../Data_base/Database";
-import Toast from "../Toaste/Toast"; // Updated import path for Toast
+import Toast from "../Toaste/Toast";
 import toast, { Toaster } from "react-hot-toast";
 import "./Shop.css";
 
@@ -27,7 +27,6 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
             return prevSelected;
           });
 
-          // Show success toast
           toast.success(<Toast message={`${product.name} added to cart!`} />);
 
           const updatedProducts = products.map((product) => {
