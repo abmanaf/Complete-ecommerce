@@ -118,7 +118,7 @@
     width: 50%;
     margin-left: 4em;
     background-color: white;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   }
 
   .check-point-proceed {
@@ -130,7 +130,7 @@
     padding: 10px 10px;
     background-color: white;
     border: none;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   }
   .cart-border {
     border: 1px solid black;
@@ -157,6 +157,7 @@
   }
   .sub-shopping-cart-page {
     width: 65%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   }
   /*
   .table-sell-style img {
@@ -172,7 +173,7 @@
     margin-right: 4em;
     background-color: white;
     border: none;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   }
 
   .tableHeaderStyle {
