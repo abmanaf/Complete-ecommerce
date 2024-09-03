@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
-
 import "./CheckPointButton.css";
 
 const CheckPointButton = ({ updateCartCount, setCart }) => {
@@ -37,7 +36,7 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
     }
     updateCartCount(0);
     setCart([]);
-    setOrderPlaced(true); // Set order placed status to true
+    setOrderPlaced(true);
     //productIds([]);
   };
 
@@ -49,7 +48,7 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
           <p>Thank you for your order!</p>
         </div>
       ) : (
-        <div className="checkout-content" style={{margin: '10px'}}>
+        <div className="checkout-content" style={{ margin: "10px" }}>
           <div className="checkout-form">
             <form>
               <div className="form-group">
