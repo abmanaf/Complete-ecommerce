@@ -102,7 +102,7 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
   return (
     <div>
       <Toaster
-        position="top-center"
+        position="top-right"
         reverseOrder={false}
         toastOptions={{
           duration: 2000,
