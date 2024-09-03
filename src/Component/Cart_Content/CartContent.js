@@ -108,7 +108,7 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
                   <div
                     style={{
                       display: "flex",
-                      justifyContent: "space-around",
+                      justifyContent: "space-between",
                       alignItems: "center",
                     }}
                   >
@@ -127,7 +127,6 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
                       <div
                         style={{
                           flexDirection: "column",
-                          justifyContent: "space-around",
                           alignItems: "center",
                         }}
                       >
@@ -151,9 +150,14 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
                       </div>
                     </div>
                     <div
-                      style={{ flexDirection: "column", textAlign: "center" }}
+                      style={{
+                        flexDirection: "column",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
                     >
-                      <div className="price-style">
+                      <div style={{ marginTop: "14px" }}>
                         <button
                           onClick={() => removeFromCart(product.id)}
                           className="action-button-style"
@@ -163,10 +167,10 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
                       </div>
 
                       <div>
-                        <span className="price-style">{product.price}</span>
+                        <span>{product.price}</span>
                       </div>
                       <div>
-                        <span className="price-style">
+                        <span>
                           {(product.count * parseFloat(product.price)).toFixed(
                             2
                           )}
@@ -174,7 +178,7 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
                       </div>
                       <div>
                         <div></div>
-                        <div className="price-style">
+                        <div>
                           <span
                             style={{
                               textAlign: "center",
