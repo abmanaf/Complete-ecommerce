@@ -25,9 +25,7 @@ body {
 }
 .product-container li {
   list-style-type: none;
-  /*
-  padding: 10px 10px;
-  */
+  padding: 0.5px 0.5px;
   background-color: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px 10px;
