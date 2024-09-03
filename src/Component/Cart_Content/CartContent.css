@@ -3,9 +3,6 @@
   display: block;
   margin: 0 auto;
 }
-.shopping-cart-page-margin-top h1 {
-  margin-top: 3em;
-}
 #shopping-cart-list-empty {
   display: block;
   justify-content: center;
@@ -94,7 +91,7 @@
 }
 .cart-border .quantity-button-decrease,
 .quantity-button-increase {
-  padding: 3px;
+  padding: 6px;
 }
 @media only screen and (min-width: 768px) {
   .price-style {
