@@ -46,9 +46,6 @@ export default function LoginPage({ enteredDetails }) {
 
   return (
     <div className="login-pic-and-forms">
-      {/* 
-      <div className="login-emoji"></div>
-      */}
       <div className="form-container" style={{ marginTop: "11.1em" }}>
         <h2 style={{ textAlign: "center" }}>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -56,7 +53,7 @@ export default function LoginPage({ enteredDetails }) {
             <input
               type="text"
               name="username"
-              className={`form-input ${error.userEmail ? "error" : ""}`}
+              className="form-input"
               placeholder="Email"
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
@@ -70,7 +67,7 @@ export default function LoginPage({ enteredDetails }) {
             <input
               type="password"
               name="password"
-              className={`form-input ${error.password ? "error" : ""}`}
+              className="form-input"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
