@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Toast from "../Toaste/Toast";
+import toast, { ToastBar, Toaster } from "react-hot-toast";
 import "./LoginPage.css";
 
 export default function LoginPage({ enteredDetails }) {
@@ -32,12 +34,15 @@ export default function LoginPage({ enteredDetails }) {
         console.log("findUser:", findUser);
 
         if (findUser !== undefined) {
-          alert(`Welcome ${userEmail}`);
+          //alert(`Welcome ${userEmail}`);
+          toast.success(<Toast message={`Welcom ${userEmail}`} />);
         } else {
-          alert("User not found");
+          //alert("User not found");
+          toast.error(<Toast message={`user not found`} />);
         }
       } else {
-        alert("User not found, create an account");
+        //alert("User not found, create an account");
+        toast.error(<Toast message={`User not found, create an account`} />);
       }
       setUserEmail("");
       setPassword("");
@@ -46,6 +51,17 @@ export default function LoginPage({ enteredDetails }) {
 
   return (
     <div className="login-pic-and-forms">
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 2000,
+          style: {
+            background: "var(--Grey-darker)",
+            color: "#fff",
+          },
+        }}
+      />
       <div className="form-container" style={{ marginTop: "11.1em" }}>
         <h2 style={{ textAlign: "center" }}>Login</h2>
         <form onSubmit={handleSubmit}>
