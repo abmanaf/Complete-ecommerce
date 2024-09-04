@@ -257,15 +257,17 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
           </div>
         </div>
       )}
-      <Modal
-        show={showModal}
-        onClose={() => {
-          setShowModal(false);
-          setSelectedProduct(null);
-        }}
-        confirmDelete={confirmDelete}
-        selectedProduct={selectedProduct}
-      />
+      {showModal && (
+        <Modal
+          show={showModal}
+          onClose={() => {
+            setShowModal(false);
+            setSelectedProduct(null);
+          }}
+          confirmDelete={confirmDelete}
+          selectedProduct={selectedProduct}
+        />
+      )}
     </div>
   );
 };
