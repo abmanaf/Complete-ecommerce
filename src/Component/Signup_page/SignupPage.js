@@ -59,7 +59,7 @@ function SignupPage({ updateEnteredDetails }) {
   return (
     <>
       <Toaster
-        position="top-right"
+        position="top-center"
         reverseOrder={false}
         toastOptions={{
           duration: 2000,
@@ -80,7 +80,7 @@ function SignupPage({ updateEnteredDetails }) {
               <input
                 type="text"
                 name="first_name"
-                className={`form-input ${error.firstName ? "error" : ""}`}
+                className="form-input "
                 placeholder="First name"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -94,7 +94,7 @@ function SignupPage({ updateEnteredDetails }) {
               <input
                 type="text"
                 name="last_name"
-                className={`form-input ${error.lastName ? "error" : ""}`}
+                className="form-input"
                 placeholder="Last name"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -108,7 +108,7 @@ function SignupPage({ updateEnteredDetails }) {
               <input
                 type="email"
                 name="email"
-                className={`form-input ${error.email ? "error" : ""}`}
+                className="form-input"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -122,7 +122,7 @@ function SignupPage({ updateEnteredDetails }) {
               <input
                 type="password"
                 name="password"
-                className={`form-input ${error.password ? "error" : ""}`}
+                className="form-input"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
