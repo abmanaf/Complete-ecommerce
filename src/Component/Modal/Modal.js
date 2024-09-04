@@ -35,7 +35,7 @@ function Modal({ show, onClose, confirmDelete, selectedProduct }) {
             onClick={confirmDelete}
             className="modal-button"
           >
-            Delete
+            Remove
           </button>
         </div>
       </div>
