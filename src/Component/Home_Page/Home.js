@@ -106,7 +106,7 @@ function Home({ cart, setCart, updateCartCount }) {
         <div className="sub-product-container">
           <img src={Imageurl(product)} alt={product.id} />
           <br />
-          {product.name} <br /> <br />
+          {product.name} <br />
           <del style={{ color: "red" }}>
             {product.previousPrice ? `₵${product.previousPrice}` : ""}
           </del>{" "}
@@ -129,7 +129,7 @@ function Home({ cart, setCart, updateCartCount }) {
           <div className="sub-fruit-container">
             <img src={Imageurl(item)} alt={item.id} />
             <br />
-            {item.name} <br /> <br />
+            {item.name} <br />
             <del style={{ color: "red" }}>
               {item.previousPrice ? `₵${item.previousPrice}` : ""}
             </del>{" "}
@@ -173,7 +173,7 @@ function Home({ cart, setCart, updateCartCount }) {
           </p>
           <div className="title-order">
             <p className="title">
-              Explore our latest collection of <i>HEALTHY FOODS</i>
+              Explore our latest collection of <i>HEALTHY FOODS </i>
               Enjoy exclusive deals, and elevate your activity with AlibabsShop.
             </p>
             <button
