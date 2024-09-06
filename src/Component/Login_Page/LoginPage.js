@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Toast from "../Toaste/Toast";
-import toast, { ToastBar, Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import "./LoginPage.css";
 
 export default function LoginPage({ enteredDetails }) {
