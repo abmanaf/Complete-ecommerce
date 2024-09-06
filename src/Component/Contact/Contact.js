@@ -60,7 +60,7 @@ const Contact = () => {
             <label htmlFor="name">Name:</label>
             <input
               type="text"
-              className={`name ${error.contactingName ? "error" : ""}`}
+              className="name"
               name="name"
               required
               value={contactingName}
@@ -74,7 +74,7 @@ const Contact = () => {
             <label htmlFor="email">Email:</label>
             <input
               type="email"
-              className={`email ${error.contactingEmail ? "error" : ""}`}
+              className="email"
               name="email"
               required
               value={contactingEmail}
@@ -87,7 +87,7 @@ const Contact = () => {
           <div className="form-group">
             <label htmlFor="message">Message:</label>
             <textarea
-              className={`message ${error.contactingMessage ? "error" : ""}`}
+              className="message"
               name="message"
               required
               value={contactingMessage}
