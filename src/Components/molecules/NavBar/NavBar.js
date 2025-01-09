@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 import UserProfile from "../../../pages/Profile/UserProfile";
-// import CartIcon from "../../atoms/Cart_Icon/CartIcon";
-import CartIcon from "../../atoms/Cart_Icon/CartIcon"
+import CartIcon from "../../atoms/CartIcon/CartIcon";
 import "./Index.css";
-export default function Navbar({ cartCount }) {
+
+const Navbar = ({ cartCount }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const openSideBar = () => {
@@ -22,11 +22,6 @@ export default function Navbar({ cartCount }) {
         className={`side-bar ${isSideBarOpen ? "open" : "closed"}`}
         style={{ marginTop: "4em" }}
       >
-        {/* 
-        <div className="close-icon" onClick={closeSideBar}>
-          <i className="fa fa-times" aria-hidden="true"></i>
-        </div>
-        */}
         <CustomLink to="/" closeSideBar={closeSideBar}>
           Home
         </CustomLink>
@@ -108,7 +103,8 @@ export default function Navbar({ cartCount }) {
       </div>
     </nav>
   );
-}
+};
+export default Navbar;
 
 function CustomLink({ to, children, closeSideBar, ...props }) {
   const resolvedPath = useResolvedPath(to);
