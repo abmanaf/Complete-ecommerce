@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function UserProfile() {
+const UserProfile = () => {
   return (
     <div>
       <Link
         to="/LoginPage"
-        className="Hey"
+        className="login-link"
         style={{ fontSize: "19px", marginRight: "0.5rem" }}
       >
         <i className="fa fa-user-circle" aria-hidden="true"></i>
