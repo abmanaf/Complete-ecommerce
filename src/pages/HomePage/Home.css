@@ -1,0 +1,268 @@
+.site-description {
+  width: 100%;
+  padding: 2em 1em;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background-size: cover;
+  background-color: #c6b562;
+  color: white;
+  padding: 7px 10px;
+  border-radius: 14px;
+  margin-top: 5em;
+  border: none;
+}
+
+.fruit-in-container {
+  overflow-x: scroll;
+}
+
+.fruit-in-container::-webkit-scrollbar {
+  display: none;
+}
+
+.fruit-container .sub-fruit-container {
+  width: 130px;
+}
+.welcome-message {
+  font-size: 25px;
+  margin-top: 4em;
+  margin-bottom: 1em;
+}
+.site-aim {
+  font-size: 20px;
+  margin-top: 1em;
+}
+.decorate-part-of-site-aim {
+  text-transform: uppercase;
+}
+.title {
+  display: block;
+  margin-top: 10px;
+}
+.show-now-button{
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #e5c827;
+  border: none;
+  cursor: pointer;
+  margin-top: 2em;
+  color: white;
+}
+.show-now-button:hover{
+  background-color: #e0bb53;
+}
+.left-site-description {
+  width: 100%;
+}
+.main-container {
+  width: 50%;
+  margin-top: 4em;
+}
+.main-container img {
+  width: 100%;
+}
+.featured-category{
+  padding: 3em 1em;
+}
+.featured-category .fruits-only-container{
+  text-align: start;
+}
+.featured-category .fruits-only-container .title-nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title{
+  text-align: start;
+  font-size: 25px;
+}
+.sub-container {
+  width: 100%;
+  height: 250px;
+  margin: 10px;
+  border-radius: 10px;
+  justify-content: center;
+  text-align: center;
+  padding: 3em 3em;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.first-sub-container {
+  background-color: azure;
+}
+.second-sub-container {
+  background-color: beige;
+}
+.sub-container img {
+  width: 80%;
+  height: 150px;
+}
+
+.third-sub-container {
+  background-color: rgb(213, 213, 164);
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-button button {
+  padding: 10px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.filter-button button:last-child {
+  margin-right: 0;
+}
+
+.filter-button button.active {
+  background-color: #c6b562;
+  color: white;
+}
+
+.scroll-button {
+  display: flex;
+  gap: 5px;
+}
+.sub-fruit-container button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 1px solid black;
+  color: red;
+}
+
+.scroll-button button {
+  border: none;
+  background-color: #e0bb53;
+  cursor: pointer;
+}
+.scroll-button button:hover {
+  background-color: #d28e0f;
+}
+.scroll-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+.category{
+  background-color: white;
+  padding: 3em 3em;
+}
+.category-text{
+  text-align: center;
+  font-size: 2em;
+  padding: 1em;
+}
+.feature-all, .feature-fruits, .feature-vegetables{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.filter-button .feature-all i, .filter-button .feature-fruits i, .filter-button .feature-vegetables i{
+  font-size: 30px;
+  padding: 10px 20px;
+  color: white;
+}
+.sub-available-product-container{
+  margin-top: 3em;
+  text-align: center;
+}
+.fruit-container .sub-fruit-container .add-to-cart{
+  color: black;
+}
+del{
+  color: red;
+}
+.product-in-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fruit-addToCart button:hover {
+  background-color: #ce6e2e;
+  color: white;
+  transition: all 0.3s ease;
+}
+@media (min-width: 1024px) {
+  .title {
+    display: block;
+  }
+  .site-description {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sub-container {
+    width: 195px;
+    height: 195px;
+    padding: 2em 2em;
+  }
+  .sub-container img {
+    width: 100%;
+    height: 100px;
+  }
+  .left-site-description {
+    width: 50%;
+    margin: 5em;
+  }
+  .main-container img {
+    width: 450px;
+    height: 350px;
+  }
+  .sort-container {
+    display: none;
+  }
+  .fruit-container .sub-fruit-container {
+    width: 150px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .title {
+    display: block;
+  }
+  .sub-container {
+    width: 200px;
+    height: 200px;
+  }
+  .title-order {
+    text-align: start;
+  }
+  .sub-container img {
+    width: 100%;
+    height: 100px;
+  }
+  .left-site-description {
+    width: 50%;
+    margin: 5em;
+  }
+  .main-container img {
+    width: 550px;
+    height: 350px;
+    margin-right: 10em;
+  }
+  .sort-container {
+    display: none;
+  }
+  .fruit-in-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+  }
+
+  .fruit-container .sub-fruit-container {
+    min-width: 180px;
+    white-space: normal;
+  }
+}
