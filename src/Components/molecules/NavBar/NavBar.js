@@ -20,7 +20,6 @@ const Navbar = ({ cartCount }) => {
     <nav className="navbar">
       <div
         className={`side-bar ${isSideBarOpen ? "open" : "closed"}`}
-        style={{ marginTop: "4em" }}
       >
         <CustomLink to="/" closeSideBar={closeSideBar}>
           Home
@@ -46,7 +45,6 @@ const Navbar = ({ cartCount }) => {
           </Link>
         </li>
       </div>
-      {/* */}
       <div className="navbar-middle">
         <CustomLink
           to="/"
@@ -106,7 +104,7 @@ const Navbar = ({ cartCount }) => {
 };
 export default Navbar;
 
-function CustomLink({ to, children, closeSideBar, ...props }) {
+export function CustomLink({ to, children, closeSideBar, ...props }) {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 

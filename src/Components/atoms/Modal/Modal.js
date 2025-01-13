@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modal.css";
 
-function Modal({ show, onClose, confirmDelete, selectedProduct }) {
+const Modal = ({ show, onClose, confirmDelete, selectedProduct }) => {
   if (!show) {
     return null;
   }
