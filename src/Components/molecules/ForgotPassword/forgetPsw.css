@@ -1,0 +1,23 @@
+.reset-password-button {
+    margin-top: 2em;
+    padding: 7px 15px;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    width: auto;
+}
+
+.forget-psw-container {
+    margin-top: 5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.forget-psw-container input {
+    margin-top: 3em;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+}
