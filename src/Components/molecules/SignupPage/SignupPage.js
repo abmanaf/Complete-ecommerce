@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-//import { useNavigate } from "react-router-dom";
 import "./SignupPage.css";
-import Toast from "../../atoms/Toaste/Toast";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from "react-toastify";
+import Input from "../../atoms/input/Input";
+import Button from "../../atoms/button/Button";
 
 function SignupPage({ updateEnteredDetails }) {
   const [firstName, setFirstName] = useState("");
@@ -11,12 +11,11 @@ function SignupPage({ updateEnteredDetails }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({
-    firstName: false,
-    lastName: false,
-    email: false,
-    password: false,
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
   });
-  //const navigate = useNavigate();
 
   const userName = firstName.toLowerCase() + lastName.toLowerCase();
 
@@ -34,10 +33,9 @@ function SignupPage({ updateEnteredDetails }) {
     };
     setError(newError);
 
-    const isValid = !Object.values(newError).some((value) => value);
+    const isValid = firstName && lastName && email && password;
     if (isValid) {
-      //toast((t) => <Toast onClick={() => toast.dismiss(t.id)} />);
-      toast.success(<Toast message={`${firstName} Welcome Have nice day`} />);
+      toast.success(`${firstName} Welcome Have nice day`);
       const newUser = {
         firstName: firstName,
         lastName: lastName,
@@ -51,108 +49,80 @@ function SignupPage({ updateEnteredDetails }) {
       setLastName("");
       setEmail("");
       setPassword("");
-      //navigate("/Data");
-      //alert("Information added");
     }
   };
 
   return (
     <>
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-        toastOptions={{
-          duration: 2000,
-          style: {
-            background: "var(--Grey-darker)",
-            color: "#fff",
-          },
-        }}
-      />
       <div className="signup-pic-and-forms">
-        {/*
-        <div className="signup-emoji"></div>
-        */}
         <div className="form-container" style={{ marginTop: "8em" }}>
-          <h2 style={{ textAlign: "center" }}>Create Account</h2>
+          <h2>Create Account</h2>
           <form onSubmit={handleSubmitForms}>
             <div className="input-container">
-              <input
+              <Input
+                label="First name"
                 type="text"
                 name="first_name"
                 className="form-input "
                 placeholder="First name"
                 value={firstName}
+                error={error.firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
-
-              {error.firstName && (
-                <span className="error-message">This field is required</span>
-              )}
             </div>
             <div className="input-container">
-              <input
+              <Input
+                label="last name"
                 type="text"
                 name="last_name"
                 className="form-input"
                 placeholder="Last name"
+                error={error.lastName}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
-
-              {error.lastName && (
-                <span className="error-message">This field is required</span>
-              )}
             </div>
             <div className="input-container">
-              <input
+              <Input
+                label="Email"
                 type="email"
                 name="email"
                 className="form-input"
                 placeholder="Email"
+                error={error.email}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-
-              {error.email && (
-                <span className="error-message">Invalid email address</span>
-              )}
             </div>
             <div className="input-container">
-              <input
+              <Input
+                label="Password"
                 type="password"
                 name="password"
                 className="form-input"
                 placeholder="Password"
+                error={error.password}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-
-              {error.password && (
-                <span className="error-message">
-                  Check the password criteria
-                </span>
-              )}
             </div>
-            <p style={{ fontSize: "14px", color: "#777777" }}>
-              Your password must:
-            </p>
-            <ul style={{ fontSize: "14px", color: "#777777" }}>
+            <p className="psw-critaria">Your password must:</p>
+            <ul className="critaria">
               <li>Be at least 6 characters long</li>
               <li>Not be the same as your name or email</li>
             </ul>
-            <br />
-            <button type="submit" className="form-button">
+            <Button type="submit" className="form-button">
               Create new account
-            </button>
-            <p className="form-footer" style={{ textAlign: "center" }}>
+            </Button>
+            <p className="form-footer">
               Already have an account?{" "}
-              <Link to="/LoginPage" style={{ color: "#007bff" }}>
+              <Link to="/LoginPage" className="login-under-signup">
                 Login
               </Link>
             </p>
           </form>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

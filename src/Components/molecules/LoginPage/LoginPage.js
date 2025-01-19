@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Toast from "../../atoms/Toaste/Toast";
-import toast, { Toaster } from "react-hot-toast";
 import "./LoginPage.css";
+import Input from "../../atoms/input/Input";
+import { ToastContainer, toast } from "react-toastify";
+import Button from "../../atoms/button/Button";
 
 export default function LoginPage({ enteredDetails }) {
   const [userEmail, setUserEmail] = useState("");
@@ -14,35 +15,25 @@ export default function LoginPage({ enteredDetails }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /*
-    console.log("entered Details:", enteredDetails);
-    console.log("user Email:", userEmail);
-    console.log("password:", password);
-*/
     const newError = {
       userEmail: userEmail.trim() === "",
       password: password.trim() === "",
     };
     setError(newError);
-    const isValid = !Object.values(newError).some((value) => value);
+    const isValid = userEmail && password;
     if (isValid) {
       if (enteredDetails && enteredDetails.length > 0) {
         const findUser = enteredDetails.find(
           (user) => user.email === userEmail && user.password === password
         );
 
-        console.log("findUser:", findUser);
-
         if (findUser !== undefined) {
-          //alert(`Welcome ${userEmail}`);
-          toast.success(<Toast message={`Welcom ${userEmail}`} />);
+          toast.success(`Welcom ${userEmail}`);
         } else {
-          //alert("User not found");
-          toast.error(<Toast message={`user not found`} />);
+          toast.error("user not found");
         }
       } else {
-        //alert("User not found, create an account");
-        toast.error(<Toast message={`User not found, create an account`} />);
+        toast.error("User not found, create an account");
       }
       setUserEmail("");
       setPassword("");
@@ -51,71 +42,49 @@ export default function LoginPage({ enteredDetails }) {
 
   return (
     <div className="login-pic-and-forms">
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-        toastOptions={{
-          duration: 2000,
-          style: {
-            background: "var(--Grey-darker)",
-            color: "#fff",
-          },
-        }}
-      />
       <div className="form-container" style={{ marginTop: "11.1em" }}>
-        <h2 style={{ textAlign: "center" }}>Login</h2>
+        <h2 className="login-text">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-container">
-            <input
+            <Input
+              label="User name"
               type="text"
               name="username"
+              value={userEmail}
               className="form-input"
               placeholder="Email"
-              value={userEmail}
+              error={error.userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
             />
-
-            {error.userEmail && (
-              <span className="error-message">This field is required</span>
-            )}
           </div>
           <div className="input-container">
-            <input
+            <Input
+              label="Password"
               type="password"
               name="password"
+              value={password}
               className="form-input"
               placeholder="Password"
-              value={password}
+              error={error.password}
               onChange={(e) => setPassword(e.target.value)}
             />
-
-            {error.password && (
-              <span className="error-message">This field is required</span>
-            )}
           </div>
-          <Link
-            to="/ForgotPassword"
-            style={{
-              fontSize: "14px",
-              color: "#007bff",
-              textDecoration: "none",
-              float: "right",
-            }}
-          >
+          <Link to="/ForgotPassword" className="forget-password">
             Forgot password?
           </Link>
-          <button type="submit" className="form-button">
+          <Button type="submit" className="form-button">
             LOGIN
-          </button>
-          <p className="form-footer" style={{ textAlign: "center" }}>
+          </Button>
+          <p className="form-footer">
             Don't have an account?{" "}
-            <Link to="/SignupPage" style={{ color: "#007bff" }}>
+            <Link to="/SignupPage" className="signup-link">
               Sign up
             </Link>
             .
           </p>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

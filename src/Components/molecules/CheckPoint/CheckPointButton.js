@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import SuccessModal from "../../atoms/Modal/SuccessModal";
 import "./CheckPointButton.css";
-import ModalSecond from "../../atoms/Modal/ModalSecond";
+import Input from "../../atoms/input/Input";
+import Button from "../../atoms/button/Button";
 
 const CheckPointButton = ({ updateCartCount, setCart }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [telephone, setTelephone] = useState("");
-  //const [contomerDetails, setCustomerDetails] = useState([]);
   const location = useLocation();
   const { productIds, cart } = location.state || {};
   const navigate = useNavigate();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [error, setError] = useState({
-    fullName: false,
-    email: false,
-    address: false,
-    telephone: false,
+    fullName: "",
+    email: "",
+    address: "",
+    telephone: "",
   });
   const [showModal, setShowModal] = useState(false);
 
@@ -43,9 +44,8 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
     };
     setError(newError);
 
-    const isValid = !Object.values(newError).some((value) => value);
+    const isValid = fullName && email && address && telephone;
     if (isValid) {
-      //alert("message sent");
       setShowModal(true);
 
       updateCartCount(0);
@@ -56,10 +56,10 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
       setAddress("");
       setTelephone("");
       setError({
-        fullName: false,
-        email: false,
-        address: false,
-        telephone: false,
+        fullName: "",
+        email: "",
+        address: "",
+        telephone: "",
       });
     }
   };
@@ -76,65 +76,52 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
         <div className="checkout-form">
           <form>
             <div className="form-group">
-              <label htmlFor="fullName">
-                Full Name <span style={{ color: "red" }}>*</span>{" "}
-              </label>
-              <input
+              <Input
+                label="Full name"
                 type="text"
                 id="fullName"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
+                error={error.fullName}
               />{" "}
-              {error.fullName && (
-                <span className="error-message">This field required</span>
-              )}
             </div>
             <div className="form-group">
-              <label htmlFor="email">
-                Email Address <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
+              <Input
+                label="Email"
                 type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                error={error.email}
               />{" "}
-              {error.email && (
-                <span className="error-message">This field is required</span>
-              )}
             </div>
             <div className="form-group">
-              <label htmlFor="address">
-                Address <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
+              <Input
+                label="Address"
                 type="text"
                 id="address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 required
+                error={error.address}
               />{" "}
-              {error.address && (
-                <span className="error-message">This field is required</span>
-              )}
             </div>
             <div className="form-group">
-              <label htmlFor="phone">
-                Phone Number <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
+              <Input
+                label="Phone Number"
                 type="text"
                 id="phone"
                 value={telephone}
                 onChange={(e) => setTelephone(e.target.value)}
                 required
+                error={error.telephone}
               />{" "}
             </div>
-            {error.telephone && (
-              <span className="error-message">This field is required</span>
-            )}
+            <Button onClick={handleSubmitOrder} className="place-order-btn">
+              Place Order
+            </Button>
           </form>
         </div>
         <div className="checkout-products">
@@ -176,17 +163,10 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
               </tfoot>
             </table>
           )}
-          <button onClick={handleSubmitOrder} className="place-order-btn">
-            Place Order
-          </button>
         </div>
       </div>
       {orderPlaced && (
-        <ModalSecond
-          show={showModal}
-          onClose={handleModalClose}
-          //setSelectedProduct(null);
-        />
+        <SuccessModal show={showModal} onClose={handleModalClose} />
       )}
     </div>
   );

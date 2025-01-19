@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./CartContent.css";
 import EmptyPage from "../EmptyPage/EmptyPage";
-import Modal from "../../Components/atoms/Modal/Modal";
+import CartContentModal from "../../Components/atoms/Modal/CartContentModal";
 
 const CartContent = ({ cart, updateCart, updateCartCount }) => {
   const navigate = useNavigate();
@@ -162,7 +162,7 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
           </div>
           <div className="check-point-proceed">
             <div className="sub-check-point">
-              <h3>Cart Totals</h3> <br />
+              <h3>Cart Totals</h3>
               <div
                 className="total-prices"
                 style={{
@@ -183,7 +183,7 @@ const CartContent = ({ cart, updateCart, updateCartCount }) => {
         </div>
       </div>
       {showModal && (
-        <Modal
+        <CartContentModal
           show={showModal}
           onClose={handleOpenModal}
           confirmDelete={confirmDelete}

@@ -87,11 +87,7 @@ function Home({ cart, setCart, updateCartCount }) {
   };
 
   const productList = filteredProducts.map((product, index) => (
-    <div
-      className="product-container"
-      key={product.id}
-      style={{ marginBottom: "2em", position: "relative" }}
-    >
+    <div className="product-container" key={product.id}>
       <li
         className={`list  ${
           selectedProductIds.includes(product.id) ? "border" : ""
@@ -101,7 +97,7 @@ function Home({ cart, setCart, updateCartCount }) {
           <img src={Imageurl(product)} alt={product.id} />
           <br />
           {product.name} <br />
-          <del style={{ color: "red" }}>
+          <del>
             {product.previousPrice ? `₵${product.previousPrice}` : ""}
           </del>{" "}
           &cent;{product.price}
@@ -151,7 +147,7 @@ function Home({ cart, setCart, updateCartCount }) {
           </p>
           <div className="title-order">
             <p className="title">
-              Explore our latest collection of <i>HEALTHY FOODS </i>
+              Explore our latest collection of <strong>HEALTHY FOODS </strong>
               Enjoy exclusive deals, and elevate your activity with AlibabsShop.
             </p>
 
@@ -171,7 +167,7 @@ function Home({ cart, setCart, updateCartCount }) {
       <div className="featured-category">
         <div className="fruits-only-container">
           <div className="title-nav">
-            <div className="title">
+            <div className="fruits-title">
               <strong>Healthy Fruits:</strong>
             </div>
             <div className="scroll-button">

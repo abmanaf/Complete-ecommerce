@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import Button from "../../atoms/button/Button";
+import "./forgetPsw.css";
 
-function ForgotPassword({ enteredDetails }) {
+const ForgotPassword = ({ enteredDetails }) => {
   const [resetPassword, setResetPassword] = useState("");
 
   const handleReset = (e) => {
@@ -17,9 +19,6 @@ function ForgotPassword({ enteredDetails }) {
     );
 
     if (findToReset) {
-      // Perform actions to reset the password
-      // Here, you would typically update the password for the found user
-      // For demonstration purposes, let's assume we set a new password directly in the state
       const updatedDetails = enteredDetails.map((user) => {
         if (user.email === findToReset.email) {
           return { ...user, password: "newPassword" };
@@ -37,42 +36,29 @@ function ForgotPassword({ enteredDetails }) {
   };
 
   return (
-    <div style={{ marginTop: "5em", marginLeft: "1em", marginRight: "1em" }}>
+    <div className="forget-psw-container">
       <form onSubmit={handleSubmit}>
         <p>
           Please enter your username or email address. You will receive a link
           to create a new password.
         </p>
         <input
-          style={{
-            marginTop: "3em",
-            width: "300px",
-            height: "40px",
-            borderRadius: "5px",
-          }}
           type="text"
           placeholder="email / user Name"
           value={resetPassword}
           onChange={handleReset}
         />{" "}
         <br />
-        <input
+        <Button
           type="submit"
+          className="reset-password-button"
           value="Reset Password"
-          style={{
-            marginTop: "2em",
-            padding: "7px 15px",
-            backgroundColor: "#0056b3",
-            color: "white",
-            cursor: "pointer",
-            border: "none",
-            borderRadius: "3px",
-            width: "auto",
-          }}
-        />
+        >
+          Reset
+        </Button>
       </form>
     </div>
   );
-}
+};
 
 export default ForgotPassword;
