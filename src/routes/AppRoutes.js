@@ -26,7 +26,6 @@ const AppRoutes = () => {
   const updateCart = (updatedCart) => {
     setCart(updatedCart);
   };
-  console.log("updateCartCount in App:", updateCartCount);
 
   return (
     <div>
