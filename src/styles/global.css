@@ -22,3 +22,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--White);
 }
+.login-link{
+    font-size: 19px;
+    margin-right: 0.5rem;
+}
