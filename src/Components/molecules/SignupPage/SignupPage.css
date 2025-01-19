@@ -1,15 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  /*
-  background-color: #f8f8f8;
-  */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .header {
   color: #007bff;
   padding: 10px;
@@ -24,6 +12,11 @@ body {
   padding: 1em;
 }
 
+.login-pic-and-forms {
+  display: flex;
+  justify-content: center;
+}
+
 .form-container {
   width: 100%;
   max-width: 400px;
@@ -33,13 +26,31 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .input-container {
   margin-bottom: 5px;
 }
+
+.label-error label {
+  color: #8d8a8a;
+}
+
+.psw-critaria {
+  font-size: 14px;
+  color: #777777;
+  font-weight: bolder;
+}
+
+.critaria {
+  font-size: 14px;
+  color: #777777;
+}
+
 .error {
   outline: 1px solid red;
   transition: 0.3s ease-in-out;
 }
+
 .input-container .error-message {
   font-size: 14px;
   color: red;
@@ -64,37 +75,29 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
+  margin-top: 1em;
+}
+
+.form-footer {
+  text-align: center;
+}
+
+.login-under-signup {
+  color: #007bff;
 }
 
 .form-button:hover {
   background-color: #0056b3;
 }
-/*
-    .product-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      font-size: 16px;
-    }
-    
-    .product-table th,
-    .product-table td {
-      padding: 10px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-    
-    
-  
-    .product-table tbody tr:hover {
-      background-color: #ddd;
-    }
-    */
-@media only screen and (min-width: 1024px) {
+
+.signup-pic-and-forms h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+@media (min-width: 1024px) {
   .signup-emoji {
-    /*
-    background-image: url("Login-emoji.jpg");
-    */
+
     background-repeat: no-repeat;
     background-size: cover;
     width: 300px;
@@ -103,15 +106,15 @@ body {
     margin-top: 11em;
     margin-left: 5em;
   }
+
   .signup-pic-and-forms {
     display: flex;
     justify-content: space-between;
   }
 }
 
-@media only screen and (min-width: 1366px) {
+@media (min-width: 1366px) {
   .signup-emoji {
-    background-image: url("Login-emoji.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 300px;
@@ -120,6 +123,7 @@ body {
     margin-top: 11em;
     margin-left: 15em;
   }
+
   .signup-pic-and-forms {
     display: flex;
     justify-content: space-between;

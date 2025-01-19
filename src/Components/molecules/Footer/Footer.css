@@ -1,4 +1,4 @@
-.footer {
+footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,20 +8,23 @@
   margin-top: 10em;
   color: black;
 }
-
-.footer-links a,
-.footer-social-icons a {
-  margin-right: 10px;
-  color: rgb(15, 14, 14);
-  text-decoration: none;
-}
-
-.footer-social-icons i {
-  font-size: 16px;
+footer i{
+  color: black;
   padding: 15px 15px;
 }
 
 .footer-social {
   display: flex;
   align-items: center;
+}
+@media (max-width: 767px){
+  footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  footer p{
+    font-size: 12px;
+  }
+
 }

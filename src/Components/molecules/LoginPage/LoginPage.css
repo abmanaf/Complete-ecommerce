@@ -1,31 +1,9 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  /*
-  background-color: #f8f8f8;
-  */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .header h1 {
   font-family: "Sofia", sans-serif;
   font-size: 25px;
   font-weight: bold;
   color: #007bff;
   padding: 1em;
-}
-
-.form-container {
-  width: 100%;
-  max-width: 400px;
-  margin: auto;
-  padding: 40px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-input {
@@ -43,6 +21,15 @@ body {
   display: block;
 }
 
+.login-text {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form-footer {
+  text-align: center;
+}
+
 .form-button {
   width: 100%;
   padding: 12px;
@@ -56,17 +43,27 @@ body {
   cursor: pointer;
 }
 
+.forget-password {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  float: right;
+}
+
+.signup-link {
+  color: #007bff;
+}
+
 .form-button:hover {
   background-color: #0056b3;
 }
+
 .login-emoji {
   display: none;
 }
-@media only screen and (min-width: 1024px) {
+
+@media (min-width: 1024px) {
   .login-emoji {
-    /*
-    background-image: url("./Login-emoji.jpg");
-    */
     background-repeat: no-repeat;
     background-size: cover;
     width: 300px;
@@ -75,15 +72,15 @@ body {
     margin-top: 11em;
     margin-left: 5em;
   }
+
   .login-pic-and-forms {
     display: flex;
     justify-content: space-between;
   }
 }
 
-@media only screen and (min-width: 1366px) {
+@media (min-width: 1366px) {
   .login-emoji {
-    background-image: url("Login-emoji.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 300px;
@@ -92,6 +89,7 @@ body {
     margin-top: 11em;
     margin-left: 15em;
   }
+
   .login-pic-and-forms {
     display: flex;
     justify-content: space-between;
