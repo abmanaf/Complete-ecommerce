@@ -1,11 +1,13 @@
 .checkout-container {
   margin-top: 5em;
 }
+
 .checkout-content {
   justify-content: center;
   padding: 2em;
   width: 100%;
 }
+
 .check-point-table {
   width: 100%;
   border-collapse: collapse;
@@ -31,14 +33,17 @@
 .check-point-table tbody tr:hover {
   background-color: #ddd;
 }
+
 .checkout-products {
   margin-top: 5em;
 }
+
 .order-placed {
   text-align: center;
   justify-content: center;
   color: green;
 }
+
 .place-order-btn {
   width: 100%;
   background-color: rgb(60, 60, 241);
@@ -51,48 +56,51 @@
   cursor: pointer;
 }
 
-.error-message {
-  color: red;
-}
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .checkout-content {
     display: flex;
     margin-top: 10em;
     gap: 4em;
   }
+
   .checkout-products {
     width: 35%;
     margin-top: 0;
   }
+
   .checkout-form {
     width: 40%;
   }
 }
-@media only screen and (min-width: 1024px) {
+
+@media (min-width: 1024px) {
   .checkout-content {
     display: flex;
     margin-top: 10em;
     gap: 4em;
   }
+
   .checkout-products {
     width: 35%;
   }
+
   .checkout-form {
     width: 40%;
   }
 }
 
-@media only screen and (min-width: 1366px) {
+@media (min-width: 1366px) {
   .checkout-content {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
     gap: 4em;
   }
+
   .checkout-products {
     width: 35%;
   }
+
   .checkout-form {
     width: 40%;
   }
