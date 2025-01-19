@@ -4,6 +4,7 @@ import { initialProducts } from "../../Data/Database";
 import "./Shop.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Button from "../../Components/atoms/button/Button";
 
 const Shop = ({ cart, setCart, updateCartCount }) => {
   const [products, setProducts] = useState(initialProducts);
@@ -60,30 +61,17 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
   };
 
   const productList = filteredProducts.map((product) => (
-    <div
-      key={product.id}
-      className="product-container"
-      style={{ marginBottom: "2em", position: "relative" }}
-    >
+    <div key={product.id} className="product-container">
       <li
         className={`list ${
           selectedProductIds.includes(product.id) ? "border" : ""
         }`}
       >
-        <div
-          className="sub-product-container"
-          style={{
-            position: "relative",
-            flexDirection: "column",
-            textAlign: "center",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div className="sub-product-container">
           <img src={Imageurl(product)} alt={product.id} />
           <br />
           {product.name} <br />
-          <del style={{ color: "red" }}>
+          <del>
             {product.previousPrice ? `₵${product.previousPrice}` : ""}
           </del>{" "}
           &cent;{product.price}
@@ -99,74 +87,43 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
 
   return (
     <div>
-      <div style={{ backgroundColor: "white", padding: "3em 3em" }}>
-        <p style={{ textAlign: "center", fontSize: "2em", padding: "1em" }}>
-          Category
-        </p>
+      <div className="shop-page-container">
+        <p className="text-category">Category</p>
         <div className="category-container">
           <div className="filter-button" code="categoryFilter">
-            <button
-              style={{ borderRadius: "10px" }}
-              className={selectedCategory === "all" ? "active" : ""}
+            <Button
+              className={`feature-all ${
+                selectedCategory === "all" ? "active" : ""
+              }`}
               onClick={() => setSelectedCategory("all")}
             >
-              <i
-                style={{
-                  fontSize: "30px",
-                  padding: "10px 20px",
-                  color: "white",
-                }}
-                className="fa fa-globe"
-                aria-hidden="true"
-              ></i>
-              <br />
+              <i className="fa fa-globe" aria-hidden="true"></i>
               All
-            </button>
-            <button
-              style={{ borderRadius: "10px" }}
-              className={selectedCategory === "fruits" ? "active" : ""}
+            </Button>
+            <Button
+              className={`feature-fruits ${
+                selectedCategory === "fruits" ? "active" : ""
+              }`}
               onClick={() => setSelectedCategory("fruits")}
             >
-              <i
-                style={{
-                  fontSize: "30px",
-                  padding: "10px 20px",
-                  color: "white",
-                }}
-                className="fa fa-weibo"
-                aria-hidden="true"
-              ></i>
-              <br />
+              <i className="fa fa-weibo" aria-hidden="true"></i>
               Fruits
-            </button>
-            <button
-              style={{ borderRadius: "10px" }}
-              className={selectedCategory === "vegetables" ? "active" : ""}
+            </Button>
+            <Button
+              className={`feature-vegetables ${
+                selectedCategory === "vegetables" ? "active" : ""
+              }`}
               onClick={() => setSelectedCategory("vegetables")}
             >
-              <i
-                style={{
-                  fontSize: "30px",
-                  padding: "10px 20px",
-                  color: "white",
-                }}
-                className="fa fa-cutlery"
-                aria-hidden="true"
-              ></i>
-              <br />
+              <i className="fa fa-cutlery" aria-hidden="true"></i>
               Vegetables
-            </button>
+            </Button>
           </div>
         </div>
       </div>
       <div className="available-product-container">
-        <div style={{ marginTop: "4em", textAlign: "center" }}>
-          <div
-            className="product-in-container"
-            style={{ justifyContent: "center", textAlignLast: "center" }}
-          >
-            {productList}
-          </div>
+        <div className="all-products-in-shop">
+          <div className="product-in-container">{productList}</div>
         </div>
       </div>
       <ToastContainer />

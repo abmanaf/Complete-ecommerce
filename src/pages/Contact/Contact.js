@@ -3,9 +3,10 @@ import "./Contact.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Input from "../../Components/atoms/input/Input";
-import TextArea from "../../Components/atoms/textArea/TextArea"; 
-import contactImage from './finalContact.jpg'
+import TextArea from "../../Components/atoms/textArea/TextArea";
+import contactImage from "./finalContact.jpg";
 import Image from "../../Components/atoms/Image";
+import Button from "../../Components/atoms/button/Button";
 
 const Contact = () => {
   const [contactingName, setContactingName] = useState("");
@@ -40,7 +41,7 @@ const Contact = () => {
 
   return (
     <div className="Contact-container">
-      <Image src={contactImage} alt="contact image" className="contact-image"/>
+      <Image src={contactImage} alt="contact image" className="contact-image" />
       <div className="contact-forms">
         <form>
           <h2 className="contact">Contact Us</h2>
@@ -79,13 +80,13 @@ const Contact = () => {
               onChange={(e) => setContactingMessage(e.target.value)}
             ></TextArea>
           </div>
-          <button
+          <Button
             className="submit-message"
             type="submit"
             onClick={handleSendFromContactPage}
           >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
       <ToastContainer />
