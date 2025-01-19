@@ -1,23 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './cartIcon.css'
 
 const CartIcon = ({ cartCount }) => {
   return (
-    <div>
+    <div className="cart__icon">
       <Link
         to="/CartContent"
         className="cart-icon"
-        style={{ fontSize: "20px" }}
       >
         <i className="fa fa-shopping-cart"></i>
         <span
           className="cart-badge"
-          style={{
-            textAlign: "center",
-            alignItems: "center",
-            justifyContent: "center",
-            display: "flex",
-          }}
         >
           {cartCount}
         </span>
