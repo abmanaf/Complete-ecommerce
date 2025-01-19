@@ -31,7 +31,7 @@
   margin-top: 1em;
 }
 
-.about-image img{
+.about-image img {
   background-position: center;
   background-size: cover;
   width: auto;
@@ -45,7 +45,7 @@
   }
 
   .about-content,
-  .about-image img{
+  .about-image img {
     width: 100%;
   }
 
@@ -54,6 +54,7 @@
     margin-top: 2em;
   }
 }
+
 @media only screen and (min-width: 1024px) {
   .about-container {
     display: flex;

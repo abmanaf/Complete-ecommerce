@@ -9,6 +9,7 @@
 .Contact-container p {
   text-align: center;
 }
+
 .contact {
   text-align: center;
   margin-bottom: 2em;
@@ -47,6 +48,7 @@ input {
   border: 1px solid rgb(127, 118, 118);
   outline: none;
 }
+
 textarea {
   width: 100%;
   height: 10rem;
@@ -56,13 +58,16 @@ textarea {
   border: 1px solid rgb(127, 118, 118);
   outline: none;
 }
+
 .error-message {
   color: red;
 }
+
 .error {
   outline: 1px solid red;
   border: none;
 }
+
 .submit-message {
   background-color: #007bff;
   color: #fff;
@@ -73,6 +78,7 @@ textarea {
   border-radius: 10px;
   padding: 15px 15px;
 }
+
 @media (min-width: 1366px) {
   .Contact-container {
     margin-top: 4em;
@@ -84,10 +90,12 @@ textarea {
     display: flex;
     background-color: #ffffff;
   }
+
   .contact-forms {
     width: 100%;
     padding: 2em;
   }
+
   .contact-image {
     margin-top: 6em;
   }

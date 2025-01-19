@@ -37,6 +37,18 @@
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.text-category {
+  text-align: center;
+  font-size: 2em;
+  padding: 1em;
+}
+
+.shop-page-container {
+  background-color: white;
+  padding: 3em 3em;
 }
 
 .sub-fruit-container {
@@ -55,6 +67,10 @@
 
 .sub-fruit-container li img {
   margin-top: 2em;
+}
+
+.all-products-in-shop {
+  text-align: center;
 }
 
 .product-container li img {
@@ -118,9 +134,6 @@
 }
 
 .addToCart button {
-  /*
-  padding: 1em;
-  */
   background-color: white;
   justify-content: center;
   align-items: center;
@@ -159,7 +172,6 @@
   .product-container li img {
     margin-top: 1em;
   }
-
 }
 
 @media only screen and (min-width: 1024px) {
@@ -225,5 +237,4 @@
   .product-container li img {
     margin-top: 1em;
   }
-
 }

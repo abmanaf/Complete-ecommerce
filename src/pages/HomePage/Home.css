@@ -26,23 +26,23 @@
 .fruit-container .sub-fruit-container {
   width: 130px;
 }
+
 .welcome-message {
   font-size: 25px;
   margin-top: 4em;
   margin-bottom: 1em;
 }
+
 .site-aim {
   font-size: 20px;
   margin-top: 1em;
 }
+
 .decorate-part-of-site-aim {
   text-transform: uppercase;
 }
-.title {
-  display: block;
-  margin-top: 10px;
-}
-.show-now-button{
+
+.show-now-button {
   padding: 10px 20px;
   border-radius: 5px;
   background-color: #e5c827;
@@ -51,34 +51,43 @@
   margin-top: 2em;
   color: white;
 }
-.show-now-button:hover{
+
+.show-now-button:hover {
   background-color: #e0bb53;
 }
+
 .left-site-description {
   width: 100%;
 }
+
 .main-container {
-  width: 50%;
+  width: auto;
   margin-top: 4em;
 }
+
 .main-container img {
   width: 100%;
 }
-.featured-category{
+
+.featured-category {
   padding: 3em 1em;
 }
-.featured-category .fruits-only-container{
+
+.featured-category .fruits-only-container {
   text-align: start;
 }
-.featured-category .fruits-only-container .title-nav{
+
+.featured-category .fruits-only-container .title-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.title{
-  text-align: start;
-  font-size: 25px;
+
+.title,
+.fruits-title {
+  font-size: 23px;
 }
+
 .sub-container {
   width: 100%;
   height: 250px;
@@ -90,12 +99,15 @@
 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .first-sub-container {
   background-color: azure;
 }
+
 .second-sub-container {
   background-color: beige;
 }
+
 .sub-container img {
   width: 80%;
   height: 150px;
@@ -133,6 +145,7 @@
   display: flex;
   gap: 5px;
 }
+
 .sub-fruit-container button {
   cursor: pointer;
   padding: 10px 20px;
@@ -146,83 +159,115 @@
   background-color: #e0bb53;
   cursor: pointer;
 }
+
 .scroll-button button:hover {
   background-color: #d28e0f;
 }
+
 .scroll-button {
   padding: 5px 10px;
   border-radius: 5px;
   color: white;
 }
-.category{
+
+.category {
   background-color: white;
   padding: 3em 3em;
 }
-.category-text{
+
+.category-text {
   text-align: center;
   font-size: 2em;
   padding: 1em;
 }
-.feature-all, .feature-fruits, .feature-vegetables{
+
+.feature-all,
+.feature-fruits,
+.feature-vegetables {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
 }
-.filter-button .feature-all i, .filter-button .feature-fruits i, .filter-button .feature-vegetables i{
+
+.filter-button .feature-all,
+.filter-button .feature-fruits,
+.filter-button .feature-vegetables {
+  background-color: rgb(197, 186, 155);
+}
+
+.filter-button .feature-all i,
+.filter-button .feature-fruits i,
+.filter-button .feature-vegetables i {
   font-size: 30px;
   padding: 10px 20px;
   color: white;
 }
-.sub-available-product-container{
-  margin-top: 3em;
+
+.product-container {
+  position: relative;
+  margin-bottom: 2em;
   text-align: center;
 }
-.fruit-container .sub-fruit-container .add-to-cart{
+
+.fruit-container .sub-fruit-container .add-to-cart {
   color: black;
 }
-del{
+
+del {
   color: red;
 }
-.product-in-container{
+
+.product-in-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .fruit-addToCart button:hover {
   background-color: #ce6e2e;
   color: white;
   transition: all 0.3s ease;
 }
+
 @media (min-width: 1024px) {
-  .title {
-    display: block;
+
+  .title,
+  .fruits-title {
+    font-size: 27px;
   }
+
   .site-description {
     display: flex;
     justify-content: space-between;
   }
+
   .sub-container {
     width: 195px;
     height: 195px;
     padding: 2em 2em;
   }
+
   .sub-container img {
     width: 100%;
     height: 100px;
   }
+
   .left-site-description {
     width: 50%;
-    margin: 5em;
+    margin: 1em;
   }
+
   .main-container img {
-    width: 450px;
+    width: 550px;
     height: 350px;
   }
+
   .sort-container {
     display: none;
   }
+
   .fruit-container .sub-fruit-container {
     width: 150px;
   }
@@ -232,29 +277,36 @@ del{
   .title {
     display: block;
   }
+
   .sub-container {
     width: 200px;
     height: 200px;
   }
+
   .title-order {
     text-align: start;
   }
+
   .sub-container img {
     width: 100%;
     height: 100px;
   }
+
   .left-site-description {
     width: 50%;
-    margin: 5em;
+    margin: 1em;
   }
+
   .main-container img {
     width: 550px;
     height: 350px;
     margin-right: 10em;
   }
+
   .sort-container {
     display: none;
   }
+
   .fruit-in-container {
     display: flex;
     overflow-x: auto;
