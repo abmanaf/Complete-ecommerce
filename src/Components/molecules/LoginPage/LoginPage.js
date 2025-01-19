@@ -1,0 +1,90 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./LoginPage.css";
+import Input from "../../atoms/input/Input";
+import { ToastContainer, toast } from "react-toastify";
+import Button from "../../atoms/button/Button";
+
+export default function LoginPage({ enteredDetails }) {
+  const [userEmail, setUserEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState({
+    userEmail: false,
+    password: false,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newError = {
+      userEmail: userEmail.trim() === "",
+      password: password.trim() === "",
+    };
+    setError(newError);
+    const isValid = userEmail && password;
+    if (isValid) {
+      if (enteredDetails && enteredDetails.length > 0) {
+        const findUser = enteredDetails.find(
+          (user) => user.email === userEmail && user.password === password
+        );
+
+        if (findUser !== undefined) {
+          toast.success(`Welcom ${userEmail}`);
+        } else {
+          toast.error("user not found");
+        }
+      } else {
+        toast.error("User not found, create an account");
+      }
+      setUserEmail("");
+      setPassword("");
+    }
+  };
+
+  return (
+    <div className="login-pic-and-forms">
+      <div className="form-container" style={{ marginTop: "11.1em" }}>
+        <h2 className="login-text">Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-container">
+            <Input
+              label="User name"
+              type="text"
+              name="username"
+              value={userEmail}
+              className="form-input"
+              placeholder="Email"
+              error={error.userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
+            />
+          </div>
+          <div className="input-container">
+            <Input
+              label="Password"
+              type="password"
+              name="password"
+              value={password}
+              className="form-input"
+              placeholder="Password"
+              error={error.password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <Link to="/ForgotPassword" className="forget-password">
+            Forgot password?
+          </Link>
+          <Button type="submit" className="form-button">
+            LOGIN
+          </Button>
+          <p className="form-footer">
+            Don't have an account?{" "}
+            <Link to="/SignupPage" className="signup-link">
+              Sign up
+            </Link>
+            .
+          </p>
+        </form>
+      </div>
+      <ToastContainer />
+    </div>
+  );
+}

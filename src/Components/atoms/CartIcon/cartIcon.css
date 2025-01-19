@@ -1,0 +1,11 @@
+.cart__icon .cart-icon {
+    font-size: 20px;
+}
+
+.cart__icon span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}

@@ -1,0 +1,30 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #ece8e8;
+  padding: 2em 2em;
+  margin-top: 10em;
+  color: black;
+}
+footer i{
+  color: black;
+  padding: 15px 15px;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767px){
+  footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  footer p{
+    font-size: 12px;
+  }
+
+}

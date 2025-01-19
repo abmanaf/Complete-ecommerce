@@ -1,0 +1,97 @@
+.header h1 {
+  font-family: "Sofia", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #007bff;
+  padding: 1em;
+}
+
+.form-input {
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input-container .error-message {
+  font-size: 14px;
+  color: red;
+  display: block;
+}
+
+.login-text {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form-footer {
+  text-align: center;
+}
+
+.form-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.forget-password {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  float: right;
+}
+
+.signup-link {
+  color: #007bff;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+.login-emoji {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .login-emoji {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    margin-top: 11em;
+    margin-left: 5em;
+  }
+
+  .login-pic-and-forms {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1366px) {
+  .login-emoji {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    margin-top: 11em;
+    margin-left: 15em;
+  }
+
+  .login-pic-and-forms {
+    display: flex;
+    justify-content: space-between;
+  }
+}
