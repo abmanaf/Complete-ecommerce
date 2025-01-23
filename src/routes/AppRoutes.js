@@ -18,6 +18,7 @@ const AppRoutes = () => {
   const [cartCount, setCartCount] = useState(0);
   const [cart, setCart] = useState([]);
   const [enteredDetails, setEnteredDetails] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateCartCount = (count) => {
@@ -70,6 +71,8 @@ const AppRoutes = () => {
               cart={cart}
               updateCart={updateCart}
               updateCartCount={updateCartCount}
+              showModal={showModal}
+              setShowModal={setShowModal}
             />
           }
         />
