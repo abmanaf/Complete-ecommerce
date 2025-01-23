@@ -8,11 +8,10 @@ import TextArea from "../../Components/atoms/textArea/TextArea";
 import Button from "../../Components/atoms/button/Button";
 import Spinner from "../../Components/atoms/spinner/Spinner";
 
-const Contact = () => {
+const Contact = ({isSubmitting, setIsSubmitting}) => {
   const [contactingName, setContactingName] = useState("");
   const [contactingEmail, setContactingEmail] = useState("");
   const [contactingMessage, setContactingMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState({
     contactingName: false,
     contactingEmail: false,
