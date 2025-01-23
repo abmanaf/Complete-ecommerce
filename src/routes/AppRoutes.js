@@ -18,6 +18,7 @@ const AppRoutes = () => {
   const [cartCount, setCartCount] = useState(0);
   const [cart, setCart] = useState([]);
   const [enteredDetails, setEnteredDetails] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateCartCount = (count) => {
     setCartCount(count);
@@ -53,7 +54,15 @@ const AppRoutes = () => {
           }
         />
         <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route
+          path="/Contact"
+          element={
+            <Contact
+              isSubmitting={isSubmitting}
+              setIsSubmitting={setIsSubmitting}
+            />
+          }
+        />
         <Route
           path="/CartContent"
           element={
@@ -80,6 +89,8 @@ const AppRoutes = () => {
             <SignupPage
               updateEnteredDetails={setEnteredDetails}
               enteredDetails={enteredDetails}
+              isSubmitting={isSubmitting}
+              setIsSubmitting={setIsSubmitting}
             />
           }
         />

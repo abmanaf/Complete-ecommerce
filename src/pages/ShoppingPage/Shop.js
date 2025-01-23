@@ -77,8 +77,8 @@ const Shop = ({ cart, setCart, updateCartCount }) => {
           &cent;{product.price}
           <br />
           <br />
-          <div className="addToCart">
-            <button onClick={() => addToCart(product.id)}>Add To Cart</button>
+          <div className="add_to_cart">
+            <Button onClick={() => addToCart(product.id)}>Add To Cart</Button>
           </div>
         </div>
       </li>

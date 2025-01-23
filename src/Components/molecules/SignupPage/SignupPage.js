@@ -4,8 +4,9 @@ import "./SignupPage.css";
 import { ToastContainer, toast } from "react-toastify";
 import Input from "../../atoms/input/Input";
 import Button from "../../atoms/button/Button";
+import Spinner from "../../atoms/spinner/Spinner";
 
-function SignupPage({ updateEnteredDetails }) {
+function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +36,16 @@ function SignupPage({ updateEnteredDetails }) {
 
     const isValid = firstName && lastName && email && password;
     if (isValid) {
-      toast.success(`${firstName} Welcome Have nice day`);
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
+        toast.success(`${firstName} Welcome Have nice day`);
+      }, 2000);
+
       const newUser = {
         firstName: firstName,
         lastName: lastName,
@@ -45,12 +55,9 @@ function SignupPage({ updateEnteredDetails }) {
         id: Date.now(),
       };
       updateEnteredDetails((prevDetails) => [...prevDetails, newUser]);
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPassword("");
     }
   };
+  let creatingUser = "Create new account";
 
   return (
     <>
@@ -112,7 +119,17 @@ function SignupPage({ updateEnteredDetails }) {
               <li>Not be the same as your name or email</li>
             </ul>
             <Button type="submit" className="form-button">
-              Create new account
+              {isSubmitting ? (
+                <div className="creating_account">
+                  {" "}
+                  <span>Creating Account</span>{" "}
+                  <span>
+                    <Spinner />
+                  </span>{" "}
+                </div>
+              ) : (
+                creatingUser.toUpperCase()
+              )}
             </Button>
             <p className="form-footer">
               Already have an account?{" "}
