@@ -6,9 +6,8 @@ import "./CartContent.css";
 import EmptyPage from "../EmptyPage/EmptyPage";
 import CartContentModal from "../../Components/atoms/Modal/CartContentModal";
 
-const CartContent = ({ cart, updateCart, updateCartCount }) => {
+const CartContent = ({ cart, updateCart, updateCartCount, showModal, setShowModal }) => {
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const increaseQuantity = (productId) => {
