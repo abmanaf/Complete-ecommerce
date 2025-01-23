@@ -7,7 +7,7 @@ const TextArea = ({label,error, className, name, value,onChange, children}) => {
             <label>{label}</label>
             {error && <span className="error-message">This field is required</span>}
             </div>
-            <textarea className={className} onChange={onChange} name={name} value={value} >{children}</textarea>
+            <textarea label={label} className={className} onChange={onChange} name={name} value={value} >{children}</textarea>
         </div>
     )
 }
