@@ -161,7 +161,7 @@
 }
 
 .scroll-button button:hover {
-  background-color: #d28e0f;
+  background-color: #e5c827;
 }
 
 .scroll-button {
@@ -224,11 +224,17 @@ del {
   justify-content: center;
   align-items: center;
 }
-
-.fruit-addToCart button:hover {
-  background-color: #ce6e2e;
+.fruit-container .fruit-addToCart .add-to-cart{
+  margin-top: 5px;
+  border: none;
+  background-color: #c6b562;
   color: white;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+}
+.fruit-container .fruit-addToCart button:hover {
+  background-color: #ceb53b;
+  color: white;
+  transform: matrix(1, 0, 0, 1.1, 0, 0);
 }
 
 @media (min-width: 1024px) {
