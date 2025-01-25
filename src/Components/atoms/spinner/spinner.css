@@ -5,23 +5,23 @@
     height: 100vh;
     background-color: #f9f9f9; /* Optional background color */
   }
-  
+
   .spinner {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-  
+
   .spinner-circle {
     border: 3px solid rgba(255, 255, 255, 0.3);
     border-top: 3px solid #333; /* Adjust color */
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     animation: spin 0.7s linear infinite;
   }
-  
+
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -30,4 +30,3 @@
       transform: rotate(360deg);
     }
   }
-  
