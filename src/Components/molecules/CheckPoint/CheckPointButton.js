@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SuccessModal from "../../atoms/Modal/SuccessModal";
 import "./CheckPointButton.css";
 import Input from "../../atoms/input/Input";
 import Button from "../../atoms/button/Button";
+import Spinner from "../../atoms/spinner/Spinner";
 
-const CheckPointButton = ({ updateCartCount, setCart }) => {
+const CheckPointButton = ({
+  updateCartCount,
+  setCart,
+  isOrdering,
+  setIsOrdering,
+}) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -46,29 +52,40 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
 
     const isValid = fullName && email && address && telephone;
     if (isValid) {
-      setShowModal(true);
-
-      updateCartCount(0);
-      setCart([]);
-      setOrderPlaced(true);
-      setFullName("");
-      setEmail("");
-      setAddress("");
-      setTelephone("");
-      setError({
-        fullName: "",
-        email: "",
-        address: "",
-        telephone: "",
-      });
+      setIsOrdering(true);
+      setTimeout(() => {
+        updateCartCount(0);
+        setCart([]);
+        setOrderPlaced(true);
+        setIsOrdering(false);
+        setFullName("");
+        setEmail("");
+        setAddress("");
+        setTelephone("");
+        setError({
+          fullName: "",
+          email: "",
+          address: "",
+          telephone: "",
+        });
+      }, 2000);
     }
   };
+
   const handleModalClose = () => {
     setShowModal(false);
     if (orderPlaced) {
       navigate("/CartContent", { state: { cart: [] } });
     }
   };
+  useEffect(() => {
+    if (isOrdering) {
+      const timer = setTimeout(() => {
+        setIsOrdering(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOrdering, setIsOrdering]);
 
   return (
     <div className="checkout-container">
@@ -120,7 +137,14 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
               />{" "}
             </div>
             <Button onClick={handleSubmitOrder} className="place-order-btn">
-              Place Order
+              {isOrdering ? (
+                <div className="order-spinner">
+                  <span>Placing</span>
+                  <span><Spinner /></span>
+                </div>
+              ) : (
+                <span>Place Order</span>
+              )}
             </Button>
           </form>
         </div>
@@ -165,7 +189,7 @@ const CheckPointButton = ({ updateCartCount, setCart }) => {
           )}
         </div>
       </div>
-      {orderPlaced && (
+      {orderPlaced && !isOrdering && (
         <SuccessModal show={showModal} onClose={handleModalClose} />
       )}
     </div>
