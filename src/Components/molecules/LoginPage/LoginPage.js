@@ -4,10 +4,12 @@ import "./LoginPage.css";
 import Input from "../../atoms/input/Input";
 import { ToastContainer, toast } from "react-toastify";
 import Button from "../../atoms/button/Button";
+import Spinner from "../../atoms/spinner/Spinner";
 
-export default function LoginPage({ enteredDetails }) {
+const LoginPage = ({ enteredDetails}) => {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [error, setError] = useState({
     userEmail: false,
     password: false,
@@ -21,24 +23,29 @@ export default function LoginPage({ enteredDetails }) {
     };
     setError(newError);
     const isValid = userEmail && password;
+    setIsLoggingIn(true);
     if (isValid) {
-      if (enteredDetails && enteredDetails.length > 0) {
-        const findUser = enteredDetails.find(
-          (user) => user.email === userEmail && user.password === password
-        );
+      setTimeout(() => {
+        if (enteredDetails && enteredDetails.length > 0) {
+          const findUser = enteredDetails.find(
+            (user) => user.email === userEmail && user.password === password
+          );
 
-        if (findUser !== undefined) {
-          toast.success(`Welcom ${userEmail}`);
+          if (findUser !== undefined) {
+            toast.success(`Welcom ${userEmail}`);
+          } else {
+            toast.error("user not found");
+          }
         } else {
-          toast.error("user not found");
+          toast.error("User not found, create an account");
         }
-      } else {
-        toast.error("User not found, create an account");
-      }
-      setUserEmail("");
-      setPassword("");
+        setUserEmail("");
+        setPassword("");
+        setIsLoggingIn(false);
+      }, 2000);
     }
-  };
+  }
+
 
   return (
     <div className="login-pic-and-forms">
@@ -47,9 +54,9 @@ export default function LoginPage({ enteredDetails }) {
         <form onSubmit={handleSubmit}>
           <div className="input-container">
             <Input
-              label="User name"
+              label="Email"
               type="text"
-              name="username"
+              name="email"
               value={userEmail}
               className="form-input"
               placeholder="Email"
@@ -72,8 +79,8 @@ export default function LoginPage({ enteredDetails }) {
           <Link to="/ForgotPassword" className="forget-password">
             Forgot password?
           </Link>
-          <Button type="submit" className="form-button">
-            LOGIN
+          <Button type="submit" className={`form-button ${isLoggingIn ? 'log': ''}`} disabled={isLoggingIn}>
+            {isLoggingIn? <div className='logging_in'><span>LOGIN</span><span><Spinner/></span></div>: "LOGIN"}
           </Button>
           <p className="form-footer">
             Don't have an account?{" "}
@@ -88,3 +95,5 @@ export default function LoginPage({ enteredDetails }) {
     </div>
   );
 }
+
+export default LoginPage;

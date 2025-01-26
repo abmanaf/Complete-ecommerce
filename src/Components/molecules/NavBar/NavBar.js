@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import CustomLink from "../../atoms/customeLink/CustomeLink";
+import { Link} from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 import UserProfile from "../../../pages/Profile/UserProfile";
 import CartIcon from "../../atoms/CartIcon/CartIcon";
@@ -8,72 +9,50 @@ import "./Index.css";
 const Navbar = ({ cartCount }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
-  const openSideBar = () => {
-    setIsSideBarOpen(true);
-  };
-
-  const closeSideBar = () => {
-    setIsSideBarOpen(false);
+  const toggleSideBar = () => {
+    setIsSideBarOpen(!isSideBarOpen);
   };
 
   return (
     <nav className="navbar">
       <div
-        className={`side-bar ${isSideBarOpen ? "open" : "closed"}`}
+        className={`overlay ${isSideBarOpen ? "active" : ""}`}
+        onClick={toggleSideBar}
       >
-        <CustomLink to="/" closeSideBar={closeSideBar}>
-          Home
-        </CustomLink>
-        <CustomLink to="/Shop" closeSideBar={closeSideBar}>
-          Shop
-        </CustomLink>
-        <CustomLink to="/About" closeSideBar={closeSideBar}>
-          About
-        </CustomLink>
-        <CustomLink to="/Contact" closeSideBar={closeSideBar}>
-          Contact
-        </CustomLink>
-        <CustomLink to="/LoginPage" closeSideBar={closeSideBar}>
-          Login
-        </CustomLink>
+        <div
+          className={`side-bar ${isSideBarOpen ? "open" : "closed"}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <CustomLink to="/" closeSideBar={toggleSideBar}>
+            Home
+          </CustomLink>
+          <CustomLink to="/Shop" closeSideBar={toggleSideBar}>
+            Shop
+          </CustomLink>
+          <CustomLink to="/About" closeSideBar={toggleSideBar}>
+            About
+          </CustomLink>
+          <CustomLink to="/Contact" closeSideBar={toggleSideBar}>
+            Contact
+          </CustomLink>
+          <CustomLink to="/LoginPage" closeSideBar={toggleSideBar}>
+            Login
+          </CustomLink>
+        </div>
       </div>
       <div className="navbar-left">
         <li className="site-name">
-          <Link to="/" closeSideBar={closeSideBar}>
+          <Link to="/">
             {" "}
             AlibabShop
           </Link>
         </li>
       </div>
       <div className="navbar-middle">
-        <CustomLink
-          to="/"
-          closeSideBar={closeSideBar}
-          style={{ color: "black" }}
-        >
-          Home
-        </CustomLink>
-        <CustomLink
-          to="/Shop"
-          closeSideBar={closeSideBar}
-          style={{ color: "black" }}
-        >
-          Shop
-        </CustomLink>
-        <CustomLink
-          to="/About"
-          closeSideBar={closeSideBar}
-          style={{ color: "black" }}
-        >
-          About
-        </CustomLink>
-        <CustomLink
-          to="/Contact"
-          closeSideBar={closeSideBar}
-          style={{ color: "black" }}
-        >
-          Contact
-        </CustomLink>
+        <CustomLink to="/">Home</CustomLink>
+        <CustomLink to="/Shop">Shop</CustomLink>
+        <CustomLink to="/About">About</CustomLink>
+        <CustomLink to="/Contact">Contact</CustomLink>
       </div>
 
       <div className="navbar-right">
@@ -85,14 +64,14 @@ const Navbar = ({ cartCount }) => {
             <CartIcon cartCount={cartCount} />
           </div>
           {isSideBarOpen ? (
-            <div className="menu-icon" onClick={closeSideBar}>
-              <Link to="#">
+            <div className="menu-icon">
+              <Link to="#" onClick={toggleSideBar}>
                 <i className="fa fa-times" aria-hidden="true"></i>
               </Link>
             </div>
           ) : (
-            <div className="menu-icon" onClick={openSideBar}>
-              <Link to="#">
+            <div className="menu-icon">
+              <Link to="#" onClick={toggleSideBar}>
                 <i className="fa fa-bars" aria-hidden="true"></i>
               </Link>
             </div>
@@ -103,23 +82,3 @@ const Navbar = ({ cartCount }) => {
   );
 };
 export default Navbar;
-
-export function CustomLink({ to, children, closeSideBar, ...props }) {
-  const resolvedPath = useResolvedPath(to);
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
-
-  const handleClick = () => {
-    closeSideBar();
-  };
-
-  return (
-    <div
-      className={`nav-link ${isActive ? "active" : ""}`}
-      onClick={handleClick}
-    >
-      <Link className="specific-active" to={to} {...props}>
-        {children}
-      </Link>
-    </div>
-  );
-}

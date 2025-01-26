@@ -3,7 +3,6 @@ import Navbar from "../Components/molecules/NavBar/NavBar";
 import { Route, Routes } from "react-router-dom";
 import FinalFooter from "../Components/molecules/Footer/Footer";
 import { WhatsAppIcon } from "../Components/atoms/WhatsAppIcon/WhatsAppIcon";
-import Spinner from "../Components/atoms/spinner/FullPageSpinner";
 import Home from "../pages/HomePage/Home";
 import Shop from "../pages/ShoppingPage/Shop";
 import About from "../pages/AboutUs/About";
@@ -14,6 +13,7 @@ import LoginPage from "../Components/molecules/LoginPage/LoginPage";
 import SignupPage from "../Components/molecules/SignupPage/SignupPage";
 import Data from "../Components/atoms/UsersData/Data";
 import ForgotPassword from "../Components/molecules/ForgotPassword/ForgotPassword";
+import FullPageSpinner from "../Components/atoms/spinner/FullPageSpinner";
 
 const AppRoutes = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -22,7 +22,6 @@ const AppRoutes = () => {
   const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isOrdering, setIsOrdering] = useState(false);
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const AppRoutes = () => {
   if (isLoading) {
     return (
       <div className="loader-container">
-        <Spinner />
+        <FullPageSpinner />
       </div>
     );
   }
@@ -120,7 +119,11 @@ const AppRoutes = () => {
         />
         <Route
           path="/LoginPage"
-          element={<LoginPage enteredDetails={enteredDetails} />}
+          element={
+            <LoginPage
+              enteredDetails={enteredDetails}
+            />
+          }
         />
         <Route
           path="/Data"
