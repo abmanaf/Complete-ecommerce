@@ -20,21 +20,51 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
 
   const userName = firstName.toLowerCase() + lastName.toLowerCase();
 
+  let passwordCheck = (password, email, firstName, lastName) => {
+    if (password.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+    if (password.toLowerCase() === email.toLowerCase()) {
+      return "Password must not be the same as your email";
+    }
+    if (
+      password.toLowerCase().includes(firstName.toLowerCase()) ||
+      password.toLowerCase().includes(lastName.toLowerCase())
+    ) {
+      return "Password must not contain your first or last name";
+    }
+    if (!/[A-Z]/.test(password)) {
+      return "Password must contain at least one uppercase letter";
+    }
+    if (!/[0-9]/.test(password)) {
+      return "Password must contain at least one number";
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return "Password must contain at least one special character";
+    }
+    return null;
+  };
   const handleSubmitForms = (e) => {
     e.preventDefault();
 
+    const passwordError = passwordCheck(password, email, firstName, lastName);
+
     const newError = {
-      firstName: firstName.trim() === "",
-      lastName: lastName.trim() === "",
-      email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
-      password:
-        password.length < 6 ||
-        password === email ||
-        password === firstName + lastName,
+      firstName: firstName.trim() === "" ? "First name is required" : "",
+      lastName: lastName.trim() === "" ? "Last name is required" : "",
+      email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        ? "Invalid email format"
+        : "",
+      password: passwordError,
     };
     setError(newError);
 
-    const isValid = firstName && lastName && email && password;
+    const isValid =
+      !newError.firstName &&
+      !newError.lastName &&
+      !newError.email &&
+      !newError.password;
+
     if (isValid) {
       setIsSubmitting(true);
       setTimeout(() => {
@@ -116,7 +146,11 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
             <p className="psw-critaria">Your password must:</p>
             <ul className="critaria">
               <li>Be at least 6 characters long</li>
-              <li>Not be the same as your name or email</li>
+              <li>Not be the same as your email</li>
+              <li>Not contain your first or last name</li>
+              <li>Contain at least one uppercase letter</li>
+              <li>Contain at least one number</li>
+              <li>Contain at least one special character</li>
             </ul>
             <Button type="submit" className="form-button">
               {isSubmitting ? (
