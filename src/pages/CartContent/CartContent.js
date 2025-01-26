@@ -164,10 +164,6 @@ const CartContent = ({ cart, updateCart, updateCartCount, showModal, setShowModa
               <h3>Cart Totals</h3>
               <div
                 className="total-prices"
-                style={{
-                  borderBottom: "1px solid black",
-                  marginTop: "3em",
-                }}
               >
                 <span>Total</span>
                 <span>&cent;{calculateTotalAmount(cart)}</span>
