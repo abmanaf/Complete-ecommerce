@@ -209,6 +209,10 @@
   position: relative;
   margin-bottom: 2em;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+.product-container:hover {
+  transform: scale(1.05); 
 }
 
 .fruit-container .sub-fruit-container .add-to-cart {
