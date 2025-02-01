@@ -6,13 +6,13 @@ import { ToastContainer, toast } from "react-toastify";
 import Button from "../../atoms/button/Button";
 import Spinner from "../../atoms/spinner/Spinner";
 
-const LoginPage = ({ enteredDetails}) => {
+const LoginPage = ({ enteredDetails }) => {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [error, setError] = useState({
-    userEmail: false,
-    password: false,
+    userEmail: "",
+    password: "",
   });
 
   const handleSubmit = (e) => {
@@ -23,8 +23,8 @@ const LoginPage = ({ enteredDetails}) => {
     };
     setError(newError);
     const isValid = userEmail && password;
-    setIsLoggingIn(true);
     if (isValid) {
+      setIsLoggingIn(true);
       setTimeout(() => {
         if (enteredDetails && enteredDetails.length > 0) {
           const findUser = enteredDetails.find(
@@ -39,13 +39,13 @@ const LoginPage = ({ enteredDetails}) => {
         } else {
           toast.error("User not found, create an account");
         }
+        setIsLoggingIn(false);
+
         setUserEmail("");
         setPassword("");
-        setIsLoggingIn(false);
       }, 2000);
     }
-  }
-
+  };
 
   return (
     <div className="login-pic-and-forms">
@@ -79,8 +79,21 @@ const LoginPage = ({ enteredDetails}) => {
           <Link to="/ForgotPassword" className="forget-password">
             Forgot password?
           </Link>
-          <Button type="submit" className={`form-button ${isLoggingIn ? 'log': ''}`} disabled={isLoggingIn}>
-            {isLoggingIn? <div className='logging_in'><span>LOGIN</span><span><Spinner/></span></div>: "LOGIN"}
+          <Button
+            type="submit"
+            className={`form-button ${isLoggingIn ? "log" : ""}`}
+            disabled={isLoggingIn}
+          >
+            {isLoggingIn ? (
+              <div className="logging_in">
+                <span>LOGIN</span>
+                <span>
+                  <Spinner />
+                </span>
+              </div>
+            ) : (
+              "LOGIN"
+            )}
           </Button>
           <p className="form-footer">
             Don't have an account?{" "}
@@ -94,6 +107,6 @@ const LoginPage = ({ enteredDetails}) => {
       <ToastContainer />
     </div>
   );
-}
+};
 
 export default LoginPage;
