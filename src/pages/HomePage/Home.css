@@ -204,7 +204,11 @@
   padding: 10px 20px;
   color: white;
 }
-
+.main-container .backgound-img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 .product-container {
   position: relative;
   margin-bottom: 2em;
