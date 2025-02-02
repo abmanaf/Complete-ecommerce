@@ -9,7 +9,7 @@ import Button from "../../Components/atoms/button/Button";
 import Image from "../../Components/atoms/Image";
 import backgound_img from "./background-image.webp";
 
-function Home({ cart, setCart, updateCartCount }) {
+const Home = ({ cart, setCart, updateCartCount }) => {
   const [products, setProducts] = useState(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedProductIds, setSelectedProductIds] = useState([]);
