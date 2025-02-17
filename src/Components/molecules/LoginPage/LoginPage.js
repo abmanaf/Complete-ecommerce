@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./LoginPage.css";
 import Input from "../../atoms/input/Input";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +14,12 @@ const LoginPage = ({ enteredDetails }) => {
     userEmail: "",
     password: "",
   });
+  const location = useLocation();
+  useEffect(() => {
+    if(location.state?.message){
+      toast.success(location.state.message)
+    }
+  }, [location.state])
 
   const handleSubmit = (e) => {
     e.preventDefault();
