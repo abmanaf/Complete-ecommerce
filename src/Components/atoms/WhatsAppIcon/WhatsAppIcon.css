@@ -1,24 +1,29 @@
-* {
-  box-sizing: border-box;
+.chat_me {
+  position: relative;
 }
-.whatsup-docaration {
+
+.whatsapp_link_icon {
   position: fixed;
   bottom: 120px;
   right: 10px;
   z-index: 999;
   text-decoration: none;
 }
-.inside-whatsup-icon {
+
+.text_in_icon {
   background-color: #777;
   padding: 5px 5px;
   color: white;
   font-size: 0.5rem;
 }
-.chat-me {
-  position: relative;
+
+.chat_me .fa-whatsapp {
+  color: green;
+  font-size: 2rem;
 }
+
 @media only screen and (min-width: 1366px) {
-  .whatsup-docaration {
+  .whatsapp_link_icon {
     bottom: 120px;
     right: 10px;
   }
