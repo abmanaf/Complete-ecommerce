@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CustomLink from "../../atoms/customeLink/CustomeLink";
 import { Link} from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
-import UserProfile from "../../../pages/Profile/UserProfile";
+import UserProfile from "../../organism/Profile/UserProfile";
 import CartIcon from "../../atoms/CartIcon/CartIcon";
 import "./Index.css";
 
