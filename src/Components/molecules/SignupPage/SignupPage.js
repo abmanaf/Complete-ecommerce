@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 import { ToastContainer, toast } from "react-toastify";
 import Input from "../../atoms/input/Input";
@@ -17,6 +17,8 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
     email: "",
     password: "",
   });
+  const [savedData, setSavedData] = useState([])
+  const navigate = useNavigate()
 
   const userName = firstName.toLowerCase() + lastName.toLowerCase();
 
@@ -74,6 +76,7 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
         setEmail("");
         setPassword("");
         toast.success(`${firstName} Welcome Have nice day`);
+        navigate('/LoginPage', {state: {message: "Thanks for creating acount, please login"}})
       }, 2000);
 
       const newUser = {
@@ -84,8 +87,13 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
         userName: userName,
         id: Date.now(),
       };
-      updateEnteredDetails((prevDetails) => [...prevDetails, newUser]);
-    }
+
+        const storedUsers = JSON.parse(localStorage.getItem("MY_users")) || [];
+        const updatedData = [...storedUsers, newUser];
+        localStorage.setItem("MY_users", JSON.stringify(updatedData))
+        setSavedData(updatedData)
+        updateEnteredDetails((prevDetails) => [...prevDetails, newUser]);        
+      } 
   };
   let creatingUser = "Create new account";
 
