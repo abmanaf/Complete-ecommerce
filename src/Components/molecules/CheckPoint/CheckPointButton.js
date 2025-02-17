@@ -50,7 +50,7 @@ const CheckPointButton = ({
     };
     setError(newError);
 
-    const isValid = fullName && email && address && telephone;
+    const isValid = !Object.values(newError).some((err) => err);
     if (isValid) {
       setIsOrdering(true);
       setTimeout(() => {
@@ -140,7 +140,9 @@ const CheckPointButton = ({
               {isOrdering ? (
                 <div className="order-spinner">
                   <span>Placing</span>
-                  <span><Spinner /></span>
+                  <span>
+                    <Spinner />
+                  </span>
                 </div>
               ) : (
                 <span>Place Order</span>
