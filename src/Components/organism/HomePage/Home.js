@@ -14,11 +14,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
   const cartItems = useSelector((state) => state.cart.items);
-
   const [selectedCategory, setSelectedCategory] = useState("all");
-  
-  // eslint-disable-next-line
-  const [selectedProductIds, setSelectedProductIds] = useState([]);
+
   const navigate = useNavigate();
   const location = useLocation();
   const fruitContainerRef = useRef(null);
@@ -70,11 +67,7 @@ const Home = () => {
 
   const productList = filteredProducts.map((product, index) => (
     <div className="product-container" key={product.id}>
-      <li
-        className={`list  ${
-          selectedProductIds.includes(product.id) ? "border" : ""
-        }`}
-      >
+      <li className="list">
         <div className="sub-product-container">
           <img src={Imageurl(product)} alt={product.id} />
           <br />
