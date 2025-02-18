@@ -1,26 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 import { ToastContainer, toast } from "react-toastify";
 import Input from "../../atoms/input/Input";
 import Button from "../../atoms/button/Button";
 import Spinner from "../../atoms/spinner/Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../../../state/slices/useSlice";
 
-function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState({
+const SignupPage = () => {
+  const users = useSelector((state) => state.user.enteredDetails);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
 
-  const userName = firstName.toLowerCase() + lastName.toLowerCase();
+  const [error, setError] = useState({});
 
-  let passwordCheck = (password, email, firstName, lastName) => {
+  const handleChange = (e) => {
+    console.log(`Changing ${e.target.name}:`, e.target.value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const passwordCheck = (password, email, firstName, lastName) => {
     if (password.length < 6) {
       return "Password must be at least 6 characters long";
     }
@@ -44,11 +52,11 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
     }
     return null;
   };
-  const handleSubmitForms = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const { firstName, lastName, email, password } = formData;
 
     const passwordError = passwordCheck(password, email, firstName, lastName);
-
     const newError = {
       firstName: firstName.trim() === "" ? "First name is required" : "",
       lastName: lastName.trim() === "" ? "Last name is required" : "",
@@ -59,32 +67,31 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
     };
     setError(newError);
 
-    const isValid =
-      !newError.firstName &&
-      !newError.lastName &&
-      !newError.email &&
-      !newError.password;
+    const isValid = !Object.values(newError).some((error) => error);
 
     if (isValid) {
+      if (users.some((user) => user.email === email)) {
+        toast.error("Email already registered!");
+        return;
+      }
+
       setIsSubmitting(true);
       setTimeout(() => {
         setIsSubmitting(false);
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setPassword("");
-        toast.success(`${firstName} Welcome Have nice day`);
-      }, 2000);
+        toast.success(
+          `${firstName}, your account has been created successfully!`
+        );
 
-      const newUser = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        userName: userName,
-        id: Date.now(),
-      };
-      updateEnteredDetails((prevDetails) => [...prevDetails, newUser]);
+        const newUser = {
+          ...formData,
+          userName: `${firstName.toLowerCase()}${lastName.toLowerCase()}`,
+          id: Date.now(),
+        };
+        dispatch(addUser(newUser));
+
+        setFormData({ firstName: "", lastName: "", email: "", password: "" });
+        navigate("/LoginPage", {state: {message: "Created successfully, please login"}});
+      }, 2000);
     }
   };
   let creatingUser = "Create new account";
@@ -94,29 +101,27 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
       <div className="signup-pic-and-forms">
         <div className="form-container" style={{ marginTop: "8em" }}>
           <h2>Create Account</h2>
-          <form onSubmit={handleSubmitForms}>
+          <form onSubmit={handleSubmit}>
             <div className="input-container">
               <Input
                 label="First name"
                 type="text"
-                name="first_name"
+                name="firstName"
                 className="form-input "
-                placeholder="First name"
-                value={firstName}
+                value={formData.firstName}
                 error={error.firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <div className="input-container">
               <Input
                 label="last name"
                 type="text"
-                name="last_name"
+                name="lastName"
                 className="form-input"
-                placeholder="Last name"
                 error={error.lastName}
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={formData.lastName}
+                onChange={handleChange}
               />
             </div>
             <div className="input-container">
@@ -125,10 +130,9 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
                 type="email"
                 name="email"
                 className="form-input"
-                placeholder="Email"
                 error={error.email}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
             <div className="input-container">
@@ -137,10 +141,9 @@ function SignupPage({ updateEnteredDetails, isSubmitting, setIsSubmitting }) {
                 type="password"
                 name="password"
                 className="form-input"
-                placeholder="Password"
                 error={error.password}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
             <p className="psw-critaria">Your password must:</p>
