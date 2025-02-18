@@ -16,6 +16,8 @@ const Home = () => {
   const cartItems = useSelector((state) => state.cart.items);
 
   const [selectedCategory, setSelectedCategory] = useState("all");
+  
+  // eslint-disable-next-line
   const [selectedProductIds, setSelectedProductIds] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
