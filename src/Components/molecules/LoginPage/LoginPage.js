@@ -1,46 +1,62 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./LoginPage.css";
-import Input from "../../atoms/input/Input";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import { logUserIn } from "../../../state/slices/useSlice";
+import Input from "../../atoms/input/Input";
 import Button from "../../atoms/button/Button";
 import Spinner from "../../atoms/spinner/Spinner";
+import "./LoginPage.css";
 
-const LoginPage = ({ enteredDetails }) => {
+const LoginPage = () => {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [error, setError] = useState({
-    userEmail: "",
-    password: "",
-  });
+  const [error, setError] = useState({});
+
+  const users = useSelector((state) => state.user.enteredDetails);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.message) {
+      toast.success(location.state.message);
+    }
+  }, [location.state]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newError = {
       userEmail: userEmail.trim() === "",
       password: password.trim() === "",
     };
     setError(newError);
-    const isValid = userEmail && password;
+
+    const isValid = !Object.values(newError).some((error) => error);
     if (isValid) {
       setIsLoggingIn(true);
+
       setTimeout(() => {
-        if (enteredDetails && enteredDetails.length > 0) {
-          const findUser = enteredDetails.find(
-            (user) => user.email === userEmail && user.password === password
-          );
+        const findUser = users.find(
+          (user) => user.email === userEmail && user.password === password
+        );
 
-          if (findUser !== undefined) {
-            toast.success(`Welcom ${userEmail}`);
-          } else {
-            toast.error("user not found");
-          }
+        const userLogging = {
+          email: userEmail,
+          password,
+        };
+
+        if (findUser) {
+          dispatch(logUserIn(userLogging));
+          toast.success(`Welcome, ${userEmail}`);
+          setTimeout(() => navigate("/", {state: {message: "login successfully"}}));
         } else {
-          toast.error("User not found, create an account");
+          toast.error("Invalid email or password");
         }
-        setIsLoggingIn(false);
 
+        setIsLoggingIn(false);
         setUserEmail("");
         setPassword("");
       }, 2000);
@@ -59,7 +75,6 @@ const LoginPage = ({ enteredDetails }) => {
               name="email"
               value={userEmail}
               className="form-input"
-              placeholder="Email"
               error={error.userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
             />
@@ -71,7 +86,6 @@ const LoginPage = ({ enteredDetails }) => {
               name="password"
               value={password}
               className="form-input"
-              placeholder="Password"
               error={error.password}
               onChange={(e) => setPassword(e.target.value)}
             />
