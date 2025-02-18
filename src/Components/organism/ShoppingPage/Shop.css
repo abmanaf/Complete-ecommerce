@@ -145,6 +145,7 @@
   border: none;
   color: white;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .add_to_cart button:hover {
