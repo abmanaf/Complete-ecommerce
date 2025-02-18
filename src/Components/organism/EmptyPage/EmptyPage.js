@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../../Components/atoms/Image";
+import Image from "../../atoms/Image";
 import emptyCart from "./person-shopping.jpg";
 
 const EmptyPage = () => {

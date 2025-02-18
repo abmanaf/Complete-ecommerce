@@ -1,14 +1,3 @@
-.reset-password-button {
-    margin-top: 2em;
-    padding: 7px 15px;
-    background-color: #0056b3;
-    color: white;
-    cursor: pointer;
-    border: none;
-    border-radius: 3px;
-    width: auto;
-}
-
 .forget-psw-container {
     margin-top: 5em;
     margin-left: 1em;
@@ -16,8 +5,31 @@
 }
 
 .forget-psw-container input {
-    margin-top: 3em;
     width: 300px;
     height: 40px;
     border-radius: 5px;
+    margin-top: 0.5em;
+    margin-top: 1em;
+    font-size: 1.1em;
+}
+
+.reset-password-button {
+    padding: 10px 35px;
+    background-color: #468cd6;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    width: auto;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.reset-password-button:hover {
+   transform: scale(1.03);
+   background-color: rgb(82, 82, 196);
+}
+
+.inp.border-red{
+    border: 1px solid red;
 }

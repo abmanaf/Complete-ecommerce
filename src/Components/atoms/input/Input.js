@@ -1,14 +1,28 @@
 import React from "react";
-import './input.css'
+import "./input.css";
 
-const Input = ({ type, className,onChange, value, label, error }) => {
+const Input = ({
+  type,
+  className,
+  onChange,
+  value,
+  label,
+  error,
+  ...props
+}) => {
   return (
     <div>
-      <div className="label-error"> 
+      <div className="label-error">
         <label>{label}</label>
         {error && <span className="error-message">This field is required</span>}
       </div>
-      <input type={type} onChange={onChange} className={className} value={value} />
+      <input
+        type={type}
+        value={value}
+        {...props}
+        className={className}
+        onChange={onChange}
+      />
     </div>
   );
 };

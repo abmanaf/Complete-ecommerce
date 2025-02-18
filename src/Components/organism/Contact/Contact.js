@@ -3,10 +3,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
 import fetchedData from "./finalContact.jpg";
-import Input from "../../Components/atoms/input/Input";
-import TextArea from "../../Components/atoms/textArea/TextArea";
-import Button from "../../Components/atoms/button/Button";
-import Spinner from "../../Components/atoms/spinner/Spinner";
+import Input from "../../atoms/input/Input";
+import TextArea from "../../atoms/textArea/TextArea";
+import Button from "../../atoms/button/Button";
+import Spinner from "../../atoms/spinner/Spinner";
 
 const Contact = ({isSubmitting, setIsSubmitting}) => {
   const [contactingName, setContactingName] = useState("");
