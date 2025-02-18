@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increaseQuantity, reduceQuantity, removeFromCart } from "../../../state/slices/cartSlice";
 import Imageurl from "../../atoms/Photoss/Photo";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -6,87 +8,50 @@ import "./CartContent.css";
 import EmptyPage from "../EmptyPage/EmptyPage";
 import CartContentModal from "../../atoms/Modal/CartContentModal";
 
-const CartContent = ({ cart, updateCart, updateCartCount, showModal, setShowModal }) => {
+const CartContent = ({ showModal, setShowModal }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart.items);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const increaseQuantity = (productId) => {
-    const updatedCart = cart.map((product) => {
-      if (
-        product.id === productId &&
-        product.count < product.availableProduct
-      ) {
-        return {
-          ...product,
-          count: product.count + 1,
-        };
-      }
-      return product;
-    });
-
-    updateCart(updatedCart);
-    updateCartCount(calculateTotalCount(updatedCart));
+  const handleIncreaseQuantity = (productId) => {
+    dispatch(increaseQuantity(productId));
   };
 
-  const reduceQuantity = (productId) => {
-    const updatedCart = cart.map((product) => {
-      if (product.id === productId && product.count > 1) {
-        return {
-          ...product,
-          count: product.count - 1,
-        };
-      }
-      return product;
-    });
-
-    updateCart(updatedCart);
-    updateCartCount(calculateTotalCount(updatedCart));
+  const handleReduceQuantity = (productId) => {
+    dispatch(reduceQuantity(productId));
   };
 
-  const removeFromCart = (productId) => {
-    const productToRemove = cart.find((product) => product.id === productId);
-    if (productToRemove) {
-      setSelectedProduct(productToRemove);
-      setShowModal(true);
-    }
+  const handleRemoveFromCart = (productId) => {
+    setSelectedProduct(cart.find((product) => product.id === productId));
+    setShowModal(true);
   };
 
   const confirmDelete = () => {
     if (selectedProduct) {
-      const updatedCart = cart.filter(
-        (product) => product.id !== selectedProduct.id
-      );
-      updateCart(updatedCart);
-      updateCartCount(calculateTotalCount(updatedCart));
+      dispatch(removeFromCart(selectedProduct.id));
       setShowModal(false);
       setSelectedProduct(null);
     }
   };
 
-  const calculateTotalCount = (cart) => {
-    return cart.reduce((count, product) => count + product.count, 0);
-  };
-
-  const calculateTotalAmount = (cart) => {
+  const calculateTotalAmount = () => {
     return cart
-      .reduce((total, product) => {
-        return total + product.count * parseFloat(product.price);
-      }, 0)
+      .reduce((total, product) => total + product.count * parseFloat(product.price), 0)
       .toFixed(2);
   };
 
   const handleCheckpointClick = () => {
     const productIds = cart.map((product) => product.id);
-    navigate("/CheckPointButton", {
-      state: { productIds, cart },
-    });
+    navigate("/CheckPointButton", { state: { productIds } });
   };
 
   const handleOpenModal = () => {
     setShowModal(false);
     setSelectedProduct(null);
   };
-  if (cart.length === 0 || "") return <EmptyPage />;
+
+  if (!cart.length) return <EmptyPage />;
 
   return (
     <div className="shopping-cart-page">
@@ -94,18 +59,12 @@ const CartContent = ({ cart, updateCart, updateCartCount, showModal, setShowModa
         <div id="shopping-cart-list">
           <div className="sub-shopping-cart-page">
             {cart.map((product, index) => (
-              <div
-                key={product.id}
-                style={{
-                  borderBottom:
-                    index === cart.length - 1 ? "none" : "1px solid #ccc",
-                }}
-              >
+              <div key={product.id} style={{ borderBottom: index === cart.length - 1 ? "none" : "1px solid #ccc" }}>
                 <div className="cart-product-container">
                   <div className="product-items-container">
                     <div>
                       <span className="table-sell-style">
-                        <img src={Imageurl(product)} alt={product.id} />
+                        <img src={Imageurl(product)} alt={product.name} />
                       </span>
                     </div>
                     <div className="item-list-container">
@@ -116,10 +75,7 @@ const CartContent = ({ cart, updateCart, updateCartCount, showModal, setShowModa
                     </div>
                   </div>
                   <div className="cart-details">
-                    <button
-                      onClick={() => removeFromCart(product.id)}
-                      className="action-button-style"
-                    >
+                    <button onClick={() => handleRemoveFromCart(product.id)} className="action-button-style">
                       <i className="fa fa-times" aria-hidden="true"></i>
                     </button>
 
@@ -127,30 +83,17 @@ const CartContent = ({ cart, updateCart, updateCartCount, showModal, setShowModa
                       <span>{product.price}</span>
                     </div>
                     <div>
-                      <span>
-                        {(product.count * parseFloat(product.price)).toFixed(2)}
-                      </span>
+                      <span>{(product.count * parseFloat(product.price)).toFixed(2)}</span>
                     </div>
                     <div>
-                      <div></div>
-                      <div>
-                        <span>
-                          <div className="cart-border">
-                            <Link
-                              onClick={() => reduceQuantity(product.id)}
-                              className="quantity-button-decrease"
-                            >
-                              -
-                            </Link>
-                            {product.count}
-                            <Link
-                              onClick={() => increaseQuantity(product.id)}
-                              className="quantity-button-increase"
-                            >
-                              +
-                            </Link>
-                          </div>
-                        </span>
+                      <div className="cart-border">
+                        <Link onClick={() => handleReduceQuantity(product.id)} className="quantity-button-decrease">
+                          -
+                        </Link>
+                        {product.count}
+                        <Link onClick={() => handleIncreaseQuantity(product.id)} className="quantity-button-increase">
+                          +
+                        </Link>
                       </div>
                     </div>
                     <br />
@@ -162,16 +105,12 @@ const CartContent = ({ cart, updateCart, updateCartCount, showModal, setShowModa
           <div className="check-point-proceed">
             <div className="sub-check-point">
               <h3>Cart Totals</h3>
-              <div
-                className="total-prices"
-              >
+              <div className="total-prices">
                 <span>Total</span>
-                <span>&cent;{calculateTotalAmount(cart)}</span>
+                <span>&cent;{calculateTotalAmount()}</span>
               </div>
               <div className="proceed-to-checkpoint-button">
-                <button onClick={() => handleCheckpointClick()}>
-                  Proceed To Checkpoint
-                </button>
+                <button onClick={handleCheckpointClick}>Proceed To Checkpoint</button>
               </div>
             </div>
           </div>
