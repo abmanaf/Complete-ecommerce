@@ -55,8 +55,8 @@ const CheckPointButton = () => {
       telephone: telephone.trim() === "",
     };
     setError(newError);
-
-    if (!Object.values(newError).some((err) => err)) {
+    const isValid = !Object.values(newError).some((err) => err);
+    if (isValid) {
       setIsOrdering(true);
       setTimeout(() => {
         dispatch(updateCartItemCount({ productId: null, count: 0 }));
@@ -133,7 +133,9 @@ const CheckPointButton = () => {
               {isOrdering ? (
                 <div className="order-spinner">
                   <span>Placing</span>
-                  <Spinner />
+                  <span>
+                    <Spinner />
+                  </span>
                 </div>
               ) : (
                 "Place Order"
