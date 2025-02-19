@@ -21,10 +21,10 @@ const SignupPage = () => {
     password: "",
   });
 
+  const {firstName, lastName, email, password} = formData
   const [error, setError] = useState({});
 
   const handleChange = (e) => {
-    console.log(`Changing ${e.target.name}:`, e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -95,7 +95,6 @@ const SignupPage = () => {
     }
   };
   let creatingUser = "Create new account";
-
   return (
     <>
       <div className="signup-pic-and-forms">
@@ -108,7 +107,7 @@ const SignupPage = () => {
                 type="text"
                 name="firstName"
                 className="form-input "
-                value={formData.firstName}
+                value={firstName}
                 error={error.firstName}
                 onChange={handleChange}
               />
@@ -120,7 +119,7 @@ const SignupPage = () => {
                 name="lastName"
                 className="form-input"
                 error={error.lastName}
-                value={formData.lastName}
+                value={lastName}
                 onChange={handleChange}
               />
             </div>
@@ -131,7 +130,7 @@ const SignupPage = () => {
                 name="email"
                 className="form-input"
                 error={error.email}
-                value={formData.email}
+                value={email}
                 onChange={handleChange}
               />
             </div>
@@ -142,7 +141,7 @@ const SignupPage = () => {
                 name="password"
                 className="form-input"
                 error={error.password}
-                value={formData.password}
+                value={password}
                 onChange={handleChange}
               />
             </div>
