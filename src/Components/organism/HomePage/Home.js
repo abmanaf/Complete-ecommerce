@@ -1,20 +1,23 @@
-import React from "react";
-import Imageurl from "../../Components/atoms/Photoss/Photo";
-import { initialProducts } from "../../Data/Database";
-import { useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import Imageurl from "../../atoms/Photoss/Photo";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./Home.css";
-import Button from "../../Components/atoms/button/Button";
-import Image from "../../Components/atoms/Image";
+import Button from "../../atoms/button/Button";
+import Image from "../../atoms/Image";
 import backgound_img from "./background-image.webp";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../../state/slices/cartSlice";
 
-const Home = ({ cart, setCart, updateCartCount }) => {
-  const [products, setProducts] = useState(initialProducts);
+const Home = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  const cartItems = useSelector((state) => state.cart.items);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedProductIds, setSelectedProductIds] = useState([]);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+  const location = useLocation();
   const fruitContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -35,7 +38,7 @@ const Home = ({ cart, setCart, updateCartCount }) => {
     }
   };
 
-  const filteredProducts = initialProducts.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     if (selectedCategory === "all") {
       return true;
     } else {
@@ -43,56 +46,28 @@ const Home = ({ cart, setCart, updateCartCount }) => {
     }
   });
 
-  const addToCart = (productId) => {
-    const updatedProducts = products.map((product) => {
-      if (product.id === productId) {
-        if (product.availableProduct > 0) {
-          const productInCart = cart
-            ? cart.find((item) => item.id === productId)
-            : null;
+  useEffect(() => {
+    if (location.state?.message) {
+      toast.success(location.state.message);
+    }
+  }, [location.state]);
 
-          if (!productInCart) {
-            setSelectedProductIds((prevSelected) => {
-              if (!prevSelected.includes(productId)) {
-                return [...prevSelected, productId];
-              }
-              return prevSelected;
-            });
-            toast.success(`${product.name} added to cart`);
-            return {
-              ...product,
-              count: Number(product.count) + 1,
-            };
-          } else {
-            toast.error(`${product.name} is already in the cart`);
-          }
-        } else {
-          toast.error(`${product.name} is out of stock`);
-        }
-      }
-      return product;
-    });
+  const handleAddToCart = (productId) => {
+    const product = products.find((p) => p.id === productId);
+    const cartItem = cartItems.find((item) => item.id === productId);
 
-    setProducts(updatedProducts);
+    if (cartItem && cartItem.count >= product.availableProduct) {
+      toast.error(`${product.name} is exhusted`);
+      return;
+    }
 
-    const totalCount = calculateTotalCount(updatedProducts);
-    updateCartCount(totalCount);
-
-    const updatedCart = updatedProducts.filter((product) => product.count > 0);
-    setCart(updatedCart);
-  };
-
-  const calculateTotalCount = (cart) => {
-    return cart.reduce((count, product) => count + product.count, 0);
+    dispatch(addToCart(product));
+    toast.success(`${product.name} added to cart`);
   };
 
   const productList = filteredProducts.map((product, index) => (
     <div className="product-container" key={product.id}>
-      <li
-        className={`list  ${
-          selectedProductIds.includes(product.id) ? "border" : ""
-        }`}
-      >
+      <li className="list">
         <div className="sub-product-container">
           <img src={Imageurl(product)} alt={product.id} />
           <br />
@@ -104,14 +79,16 @@ const Home = ({ cart, setCart, updateCartCount }) => {
           <br />
           <br />
           <div className="add_to_cart">
-            <Button onClick={() => addToCart(product.id)}>Add To Cart</Button>
+            <Button onClick={() => handleAddToCart(product.id)}>
+              Add To Cart
+            </Button>
           </div>
         </div>
       </li>
     </div>
   ));
 
-  const healthyFruits = initialProducts
+  const healthyFruits = products
     .filter((item) => item.category === "fruits")
     .map((item) => (
       <div className="fruit-container" key={item.id}>
@@ -124,7 +101,7 @@ const Home = ({ cart, setCart, updateCartCount }) => {
             <div className="fruit-addToCart">
               <Button
                 className="add-to-cart"
-                onClick={() => addToCart(item.id)}
+                onClick={() => handleAddToCart(item.id)}
               >
                 Add To Cart
               </Button>
@@ -228,6 +205,6 @@ const Home = ({ cart, setCart, updateCartCount }) => {
       <ToastContainer />
     </div>
   );
-}
+};
 
 export default Home;
