@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./About.css";
 import aboutUs from "./about__us.avif";
+import Navbar from "../../molecules/NavBar/NavBar";
 
 function About() {
   const [showMore, setShowMore] = useState(false);
@@ -10,6 +11,8 @@ function About() {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="about-container">
       <div className="about-wrapper">
         <div className="about-content">
@@ -69,6 +72,7 @@ function About() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

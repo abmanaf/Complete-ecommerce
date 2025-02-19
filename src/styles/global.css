@@ -23,7 +23,3 @@ body {
     background-color: var(--White);
     overflow-x: hidden;
 }
-.login-link{
-    font-size: 19px;
-    margin-right: 0.5rem;
-}

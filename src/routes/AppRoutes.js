@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/molecules/NavBar/NavBar";
 import { Route, Routes } from "react-router-dom";
 import FinalFooter from "../Components/molecules/Footer/Footer";
 import { WhatsAppIcon } from "../Components/atoms/WhatsAppIcon/WhatsAppIcon";
@@ -40,7 +39,6 @@ const AppRoutes = () => {
   return (
     <Provider store={store}>
       <div>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Shop" element={<Shop />} />

@@ -9,6 +9,7 @@ import Image from "../../atoms/Image";
 import backgound_img from "./background-image.webp";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../../state/slices/cartSlice";
+import Navbar from "../../molecules/NavBar/NavBar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -117,6 +118,7 @@ const Home = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="site-description">
         <div className="left-site-description">
           <p className="welcome-message">

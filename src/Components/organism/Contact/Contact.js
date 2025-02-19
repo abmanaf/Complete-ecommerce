@@ -7,6 +7,7 @@ import Input from "../../atoms/input/Input";
 import TextArea from "../../atoms/textArea/TextArea";
 import Button from "../../atoms/button/Button";
 import Spinner from "../../atoms/spinner/Spinner";
+import Navbar from "../../molecules/NavBar/NavBar";
 
 const Contact = ({isSubmitting, setIsSubmitting}) => {
   const [contactingName, setContactingName] = useState("");
@@ -43,6 +44,8 @@ const Contact = ({isSubmitting, setIsSubmitting}) => {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="contact-container">
       <div className="contact-wrapper">
         <div className="contact-image-section">
@@ -102,6 +105,7 @@ const Contact = ({isSubmitting, setIsSubmitting}) => {
         </div>
       </div>
       <ToastContainer />
+    </div>
     </div>
   );
 };

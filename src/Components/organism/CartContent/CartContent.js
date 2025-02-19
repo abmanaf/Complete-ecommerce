@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import "./CartContent.css";
 import EmptyPage from "../EmptyPage/EmptyPage";
 import CartContentModal from "../../atoms/Modal/CartContentModal";
+import Navbar from "../../molecules/NavBar/NavBar";
 
 const CartContent = ({ showModal, setShowModal }) => {
   const dispatch = useDispatch();
@@ -54,6 +55,8 @@ const CartContent = ({ showModal, setShowModal }) => {
   if (!cart.length) return <EmptyPage />;
 
   return (
+    <div>
+      <Navbar />
     <div className="shopping-cart-page">
       <div className="shopping-cart-page-margin-top">
         <div id="shopping-cart-list">
@@ -124,6 +127,7 @@ const CartContent = ({ showModal, setShowModal }) => {
           selectedProduct={selectedProduct}
         />
       )}
+    </div>
     </div>
   );
 };
