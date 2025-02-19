@@ -1,0 +1,33 @@
+.login-link {
+    /* position: relative; */
+    font-size: 19px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+
+  .profile_links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 1000; 
+    display: flex;
+    flex-direction: column;
+    min-width: 120px; 
+  }
+  
+  .profile_links a {
+    color: #020202;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+  }
+  
+  .profile_links a:hover {
+    background-color: #f0f0f0;
+  }
