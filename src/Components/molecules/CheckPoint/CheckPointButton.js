@@ -12,6 +12,7 @@ import Input from "../../atoms/input/Input";
 import Button from "../../atoms/button/Button";
 import Spinner from "../../atoms/spinner/Spinner";
 import "./CheckPointButton.css";
+import Navbar from "../NavBar/NavBar";
 
 const CheckPointButton = () => {
   const dispatch = useDispatch();
@@ -85,6 +86,8 @@ const CheckPointButton = () => {
   
 
   return (
+    <di>
+      <Navbar />
     <div className="checkout-container">
       <div className="checkout-content">
         <div className="checkout-form">
@@ -186,6 +189,7 @@ const CheckPointButton = () => {
         <SuccessModal show={showModal} onClose={handleModalClose} />
       )}
     </div>
+    </di>
   );
 };
 

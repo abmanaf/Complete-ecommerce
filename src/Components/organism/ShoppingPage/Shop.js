@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Button from "../../atoms/button/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../../state/slices/cartSlice";
+import Navbar from "../../molecules/NavBar/NavBar";
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const Shop = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="shop-page-container">
         <p className="text-category">Category</p>
         <div className="category-container">
