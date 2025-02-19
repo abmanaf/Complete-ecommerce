@@ -97,9 +97,9 @@ const SignupPage = () => {
   let creatingUser = "Create new account";
   return (
     <>
-      <div className="signup-pic-and-forms">
-        <div className="form-container" style={{ marginTop: "8em" }}>
-          <h2>Create Account</h2>
+      <div className="signup-page-wrapper">
+        <div className="form-container">
+          <h2 className="signup_header">Create Account</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <Input
