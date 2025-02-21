@@ -12,7 +12,7 @@ const LoginPage = () => {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-   const [error, setError] = useState({
+  const [error, setError] = useState({
     userEmail: "",
     password: "",
   });
@@ -26,7 +26,6 @@ const LoginPage = () => {
       toast.success(location.state.message);
     }
   }, [location.state]);
- 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +53,7 @@ const LoginPage = () => {
         if (findUser) {
           dispatch(logUserIn(userLogging));
           toast.success(`Welcome, ${userEmail}`);
-          setTimeout(() => navigate("/", {state: {message: "login successfully"}}));
+          setTimeout(() => navigate("/", { state: { message: "Login successful" } }));
         } else {
           toast.error("Invalid email or password");
         }
@@ -67,8 +66,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-pic-and-forms">
-      <div className="form-container" style={{ marginTop: "11.1em" }}>
+    <div className="login-page-wrapper">
+      <div className="form-container">
         <h2 className="login-text">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-container">
