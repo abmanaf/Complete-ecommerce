@@ -119,8 +119,8 @@ const LoginPage = () => {
             .
           </p>
         </form>
-        <ToastContainer />
       </div>
+      <ToastContainer />
     </div>
   );
 };
